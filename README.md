@@ -81,6 +81,21 @@ $ docker image ls -q        # Mostrar solo los ID de las imágenes
 $ docker images             # Otra forma de listar imagenes (El comando clásico)
 ```
 
+- Muesta el menú de ayuda para las imagenes
+
+```sh
+$ docker image --help
+```
+
+- Eliminar imagenes
+
+```sh
+$ docker image rm [ID | IMAGE]
+$ docker rmi -f $(docker images -a -q)      # Eliminar todas las images (Primero listar solo los ID de las imagenes)
+
+$ docker image pruna                        # Elimina imágenes no utilizadas
+```
+
 - Ejecutar una image y crear un contenedor:
 
 ```sh
@@ -95,4 +110,19 @@ $ docker container ls
 $ docker container ls -a        # Activos y detenidos
 $ docker container ls -q        # Ver solo los ID de los contenedores (útil para scripts)
 $ docker ps                     # Otra forma de listar contenedores (El comando clásico)
+```
+
+- Muestra el menú de ayuda para contenedores
+
+```sh
+$ docker container --help
+```
+
+- Eliminar contenedores
+
+```sh
+$ docker container rm [CONTAINER_ID | NAMES]
+$ docker container rm -f $(docker ps -a -q)         # Eliminar todos los contenedores (Primero lista solo los ID de los contenedores)
+
+$ docker container prune                            # Elimina todos los contenedores detenidos
 ```
