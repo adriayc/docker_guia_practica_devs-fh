@@ -44,3 +44,55 @@ Si eres desarrollador, especialmente de NestJS, Node.js, Java, PHP o trabajas co
 4. Dacilta el despliegue.
 5. Aísla aplicaciones.
 6. Es un estándar de la industria.
+
+### Docker Hub
+
+Docker Hub es el registro (container registry) oficial de Docker, donde se almacena, comparten y distribuyen imágenes de Docker.
+
+### Imagen
+
+Una imagen (Docker Image) es un archivo de solo lectura (read-only) que contiene todo lo necesario para ejecutar una aplicación dentro de un contenedor
+
+Una Imagen no está en ejecución. Es simplemente una plantilla a partir de la cual Docker crea uno o más contenedores.
+
+### Container
+
+Un contenedor (Container) es una instancia en ejecución de una imagen de Docker. Es un entorno aislado donde se ejecuta una aplicación junto con todas sus dependencias, configuraciones y archivos necesarios.
+
+### Docker Daemon
+
+El Docker Daemon (también llamdo dockerd) es un servicio principal de Docker. Se ejecuta en segundo plano y es el encargado de gestionar todos los recursos de Docker en el sistema.
+
+### Commandos
+
+- Descargar una imagen desde el registro oficial:
+
+```sh
+$ docker pull IMAGEN_NAME
+$ docker pull IMAGEN_NAME:TAG       # Versión específica
+```
+
+- Listar imagenes
+
+```sh
+$ docker image ls
+$ docker image ls -a        # Incluyendo las intermedias
+$ docker image ls -q        # Mostrar solo los ID de las imágenes
+$ docker images             # Otra forma de listar imagenes (El comando clásico)
+```
+
+- Ejecutar una image y crear un contenedor:
+
+```sh
+$ docker container run IMAGE_NAME
+$ docker run IMAGE_NAME
+```
+
+- Listar contenedores
+
+```sh
+$ docker container ls
+$ docker container ls -a        # Activos y detenidos
+$ docker container ls -q        # Ver solo los ID de los contenedores (útil para scripts)
+$ docker ps                     # Otra forma de listar contenedores (El comando clásico)
+```
