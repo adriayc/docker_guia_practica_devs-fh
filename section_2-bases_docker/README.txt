@@ -57,6 +57,10 @@ BASES DE DOCKER
         $ docker container ls
     - Eliminar los contendores
         $ docker container rm -f e0924757c000 e0924757c000
+    - Listar todas las imagenes
+        $ docker image ls -a
+    - Elinar todos los imagenes de Postgres
+        $ docker image rm 9a8afca54e78 32ca0af8e77b
 
     - Descar una image (MariaDB Server)
         $ docker pull mariadb:lts-ubi
@@ -72,6 +76,8 @@ BASES DE DOCKER
         $ docker container logs 96c9f2342387
         $ docker container logs --follow 96c9f2342387
             > Search: 'GENERATED ROOT PASSWORD: {{RANDOM_PASS_VALUE}}'
+    - Eliminar el contenedor
+        $ docker container rm -f 96c9f2342387
 
 * Docker Desktop
     - Search IMAGE (Click 'Search' o CTRL + K)
