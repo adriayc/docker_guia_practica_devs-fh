@@ -69,6 +69,10 @@ Docker Desktop es una aplicación que proporciona un entorno completo para desar
 
 En Linux, normalmente se instala directamente Docker Engine, por lo que Docker Desktop es opcional.
 
+### Alpine Linux
+
+Alpine Linux es una distribución de Linux muy ligera, segura y optimizada, diseñada para consumir pocos recursos. En Docker, se utiliza como imagen base para crear contenedores pequeños y rápidos.
+
 ### Commandos
 
 - Descargar una imagen desde el registro oficial:
@@ -112,6 +116,10 @@ $ docker run -d -p 80:80 IMAGE_NAME
 $ docker run -dp 80:80 IMAGE_NAME
 # -d - modo detached (En segundo plano)
 # -p - publicar los puertos (mapea el puerto 80 del host con el 80 del contenedor)
+
+$ docker container run --name CONTAINER-NAME -e VAR_NAME=value -d IMAGE_NAME
+# --name - nombre del contenedor
+# -e - variable de entorno (CLAVE=valor)
 ```
 
 - Listar contenedores

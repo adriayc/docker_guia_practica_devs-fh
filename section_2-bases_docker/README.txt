@@ -35,6 +35,11 @@ BASES DE DOCKER
     - Eliminar una imagen
         $ docker image rm d79336f4812b
 
+    - Descargar una image (Postgres)
+        $ docker pull postgres              // Tag: latest (La última versión)
+    - Crear y arrancar el contenedor
+        $ docker container run --name some-postgres -e POSTGRES_PASSWORD=postgres123 -d postgres 
+
 * Docker Desktop
     - Search IMAGE (Click 'Search' o CTRL + K)
         > Search: ... hello-world
