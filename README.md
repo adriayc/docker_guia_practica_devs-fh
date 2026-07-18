@@ -156,6 +156,14 @@ $ docker container stop [CONTAINER_ID | NAMES]
 $ docker container start [CONTAINER_ID | NAMES]
 ```
 
+- Obtener los logs de un contenedor
+
+```sh
+$ docker container logs [CONTAINER_ID | NAMES]
+$ docker container logs -f [CONTAINER_ID | NAMES]       # Seguir la salida del log (En tiempo real)
+
+```
+
 - Eliminar contenedores
 
 ```sh

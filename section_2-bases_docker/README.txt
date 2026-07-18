@@ -58,6 +58,21 @@ BASES DE DOCKER
     - Eliminar los contendores
         $ docker container rm -f e0924757c000 e0924757c000
 
+    - Descar una image (MariaDB Server)
+        $ docker pull mariadb:lts-ubi
+    - Crear y arrancar el contenedor
+        $ docker container run \
+          > --name some-mariadb \
+          > -p 3306:3306 \
+          > -e MARIADB_RANDOM_ROOT_PASSWORD=1 \
+          > -d mariadb:lts-ubi
+    - Listar los contenedores activos
+        $ docker container ls
+    - Obtener los logs del contenedor
+        $ docker container logs 96c9f2342387
+        $ docker container logs --follow 96c9f2342387
+            > Search: 'GENERATED ROOT PASSWORD: {{RANDOM_PASS_VALUE}}'
+
 * Docker Desktop
     - Search IMAGE (Click 'Search' o CTRL + K)
         > Search: ... hello-world
@@ -77,5 +92,13 @@ BASES DE DOCKER
         > PostgreSQL
         > Database host/socket: localhost           Port: 5432
         > Database's user: postgres                 Password: postgres123
+        > Database's name:
+        Click 'Text' | 'Save' | 'Connect'
+
+    - Create a new connection MariaDB (Click '+' | 'New Connection')
+        > Connection's name: mariadb-docker
+        > MariaDB
+        > Database host/socket: 127.0.0.1           Port: 3306
+        > Database's user: root                    Password: {{PASS_GENERATED_VALUE}}
         > Database's name:
         Click 'Text' | 'Save' | 'Connect'
