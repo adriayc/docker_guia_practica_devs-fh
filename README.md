@@ -117,9 +117,10 @@ $ docker run -dp 80:80 IMAGE_NAME
 # -d - modo detached (En segundo plano)
 # -p - publicar los puertos (mapea el puerto 80 del host con el 80 del contenedor)
 
-$ docker container run --name CONTAINER-NAME -e VAR_NAME=value -d IMAGE_NAME
+$ docker container run --name CONTAINER-NAME -e VAR_NAME=value -p PORT:PORT -d IMAGE_NAME
 # --name - nombre del contenedor
 # -e - variable de entorno (CLAVE=valor)
+# -p - publicar los puertos
 ```
 
 - Listar contenedores

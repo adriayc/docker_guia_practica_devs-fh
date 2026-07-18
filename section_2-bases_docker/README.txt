@@ -38,7 +38,9 @@ BASES DE DOCKER
     - Descargar una image (Postgres)
         $ docker pull postgres              // Tag: latest (La última versión)
     - Crear y arrancar el contenedor
-        $ docker container run --name some-postgres -e POSTGRES_PASSWORD=postgres123 -d postgres 
+        $ docker container run --name some-postgres -e POSTGRES_PASSWORD=postgres123 -p 5432:5432 -d postgres           // Personalizar el nombre, variables de entorno y exponer los puertos
+    - Eliminar un contenedor
+        $ docker container rm -f 2b34dd5cac25           // Elimina contedor en ejecución (De manera forzada)
 
 * Docker Desktop
     - Search IMAGE (Click 'Search' o CTRL + K)
@@ -52,3 +54,12 @@ BASES DE DOCKER
     - Lista de contenedores (Click 'Containers')
         Name            Container ID    Images                  Actions
         kind_mcleren    5f697a16e2f5    hello-world             [Play] | [Delete]
+
+* TablePlus
+    - Create a new connection Postges (Click '+' > 'New Connection')
+        > Connection's name: postgres-docker
+        > PostgreSQL
+        > Database host/socket: localhost           Port: 5432
+        > Database's user: postgres                 Password: postgres123
+        > Database's name:
+        Click 'Text' | 'Save' | 'Connect'
