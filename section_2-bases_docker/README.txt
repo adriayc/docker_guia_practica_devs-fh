@@ -19,3 +19,18 @@ BASES DE DOCKER
         $ docker image rm 5c855ad7b85e              // Por ID
         $ docker image rm hello-world:latest        // Por IMAGE
         $ docker image pruna                        // Todas las imagenes no utilizadas
+
+    - Crear y arrancar un contenedor
+        $ docker run -d -p 80:80 docker/getting-started             // Abrir el URL: http://localhost/ en el browser
+        $ docker run -dp 80:80 docker/getting-started
+            > -d - ejecutar en modo detached o independiente (en segundo plano)
+            > -p 80:80 - mapea el puerto 80 del host al pueto 80 del contenedor
+            > docker/getting-started - la imagen a utilizar
+    - Detener un contenedor en ejecución
+        $ docker container stop 44b1c8537918
+    - Iniciar un contenedor detenido
+        $ docker container start 44b1c8537918
+    - Eliminar forzada de un contenedor en ejecución
+        $ docker container rm -f 44b1c8537918
+    - Eliminar una imagen
+        $ docker image rm d79336f4812b

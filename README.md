@@ -101,6 +101,11 @@ $ docker image pruna                        # Elimina imágenes no utilizadas
 ```sh
 $ docker container run IMAGE_NAME
 $ docker run IMAGE_NAME
+
+$ docker run -d -p 80:80 IMAGE_NAME
+$ docker run -dp 80:80 IMAGE_NAME
+# -d - modo detached (En segundo plano)
+# -p - publicar los puertos (mapea el puerto 80 del host con el 80 del contenedor)
 ```
 
 - Listar contenedores
@@ -118,10 +123,23 @@ $ docker ps                     # Otra forma de listar contenedores (El comando 
 $ docker container --help
 ```
 
+- Detener un contenedor en ejecución
+
+```sh
+$ docker container stop [CONTAINER_ID | NAMES]
+```
+
+- Iniciar un contenedor detenido
+
+```sh
+$ docker container start [CONTAINER_ID | NAMES]
+```
+
 - Eliminar contenedores
 
 ```sh
 $ docker container rm [CONTAINER_ID | NAMES]
+$ docker container rm -f [CONTAINER_ID | NAMES]     # Fueza la eliminacion de un contenedor en ejecución
 $ docker container rm -f $(docker ps -a -q)         # Eliminar todos los contenedores (Primero lista solo los ID de los contenedores)
 
 $ docker container prune                            # Elimina todos los contenedores detenidos
