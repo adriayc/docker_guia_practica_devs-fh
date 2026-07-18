@@ -41,6 +41,22 @@ BASES DE DOCKER
         $ docker container run --name some-postgres -e POSTGRES_PASSWORD=postgres123 -p 5432:5432 -d postgres           // Personalizar el nombre, variables de entorno y exponer los puertos
     - Eliminar un contenedor
         $ docker container rm -f 2b34dd5cac25           // Elimina contedor en ejecución (De manera forzada)
+    - Crear y arrancar el contenedor
+        $ docker container run \
+          > --name postgres-one \
+          > -e POSTGRES_PASSWORD=mypass1 \
+          > -p 5432:5432 \
+          > -d postgres
+
+        $ docker container run \
+          > --name postgres-two \
+          > -e POSTGRES_PASSWORD=mypass2 \
+          > -p 5433:5432 \
+          > -d postgres:18.4-alpine3.24
+    - Listar los contenedores en ejecución
+        $ docker container ls
+    - Eliminar los contendores
+        $ docker container rm -f e0924757c000 e0924757c000
 
 * Docker Desktop
     - Search IMAGE (Click 'Search' o CTRL + K)

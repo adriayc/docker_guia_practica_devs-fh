@@ -121,6 +121,12 @@ $ docker container run --name CONTAINER-NAME -e VAR_NAME=value -p PORT:PORT -d I
 # --name - nombre del contenedor
 # -e - variable de entorno (CLAVE=valor)
 # -p - publicar los puertos
+
+$ docker container run \
+> --name CONTAINER-NAME \
+> -e VAR_NAME=value \
+> -p PORT:PORT \
+> -d IMAGE_NAME
 ```
 
 - Listar contenedores
@@ -156,6 +162,7 @@ $ docker container start [CONTAINER_ID | NAMES]
 $ docker container rm [CONTAINER_ID | NAMES]
 $ docker container rm -f [CONTAINER_ID | NAMES]     # Fueza la eliminacion de un contenedor en ejecución
 $ docker container rm -f $(docker ps -a -q)         # Eliminar todos los contenedores (Primero lista solo los ID de los contenedores)
+$ docker container rm -f [CONTAINER_ID | NAMES] [CONTAINER_ID | NAMES]         # Eliminar varios contenedores en ejecución
 
 $ docker container prune                            # Elimina todos los contenedores detenidos
 ```
