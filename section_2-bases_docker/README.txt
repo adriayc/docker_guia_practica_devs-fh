@@ -34,3 +34,16 @@ BASES DE DOCKER
         $ docker container rm -f 44b1c8537918
     - Eliminar una imagen
         $ docker image rm d79336f4812b
+
+* Docker Desktop
+    - Search IMAGE (Click 'Search' o CTRL + K)
+        > Search: ... hello-world
+            hello-world                 [Pull]  |  [Run]
+    - Lista de imagenes (Click 'Images')
+        Name            Tag                     Actions
+        hello-world     latest                  [RUN] | [Delete]
+            > Run a new container
+                Click 'Run'
+    - Lista de contenedores (Click 'Containers')
+        Name            Container ID    Images                  Actions
+        kind_mcleren    5f697a16e2f5    hello-world             [Play] | [Delete]

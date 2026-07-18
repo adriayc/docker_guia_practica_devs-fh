@@ -63,6 +63,12 @@ Un contenedor (Container) es una instancia en ejecución de una imagen de Docker
 
 El Docker Daemon (también llamdo dockerd) es un servicio principal de Docker. Se ejecuta en segundo plano y es el encargado de gestionar todos los recursos de Docker en el sistema.
 
+### Docker Desktop
+
+Docker Desktop es una aplicación que proporciona un entorno completo para desarrollar, ejecutar y administrar contenedores Docker en Windows y macOS. Incluye el motor de Docker (Docker Engine), herramientas de línea de comandos y una interfaz gráfica para facilitar el trabajo con contenedores.
+
+En Linux, normalmente se instala directamente Docker Engine, por lo que Docker Desktop es opcional.
+
 ### Commandos
 
 - Descargar una imagen desde el registro oficial:
