@@ -95,6 +95,12 @@ Docker ofrece tres formas principales de almacenar datos en los contenedores:
 
    Los tmpfs Mounts almacenan datos únicamente en la memoria RAM.
 
+### Container Network
+
+Una Container Network (o red de contenedores) es un mecanismo de Docker que permite que los contenedores se comuniquen entre sí y con el mundo exterior.
+
+Sin un red, los contenedores estarían completamente aislados y no podrían intercambiar información.
+
 ### Commandos
 
 - Descargar una imagen desde el registro oficial:
@@ -222,4 +228,34 @@ $ docker volume ls
 
 ```sh
 $ docker volume inspect [VOLUME_NAME]
+```
+
+- Crear un red
+
+```sh
+$ docker network create NETWORK_NAME
+```
+
+- Listar redes
+
+```sh
+$ docker network ls
+```
+
+- Conectar un contenedor a un red
+
+```sh
+$ docker network connect [NETWORK_ID | NAME] [CONTAINER_ID | NAMES]
+```
+
+- Mostrar información detallada de un red
+
+```sh
+$ docker network inspect [NETWORK_ID | NAME]
+```
+
+- Elimina todas las redes no utilizadas
+
+```sh
+$ docker network prune
 ```

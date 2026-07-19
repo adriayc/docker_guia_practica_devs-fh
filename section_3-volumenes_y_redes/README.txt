@@ -58,6 +58,18 @@ VOLÚMENES Y REDES
             > phpmyadmin:5.2.3-apache
             NOTA: Abre la URL: http://localhost:8080/ en el browser
 
+        * Crear una red
+            $ docker network create world-app
+        * Listar redes
+            $ docker network ls
+        * Eliminar todas las redes no utilizadas
+            $ docker network prune 
+        * Conectar uno o más contenedor/es a una red
+            $ docker network connect world-app 9875110ecea1             # Conectar a la red el contenedor de MariaDB
+            $ docker network connect world-app 9f389e299689             # Conectar a la red el contenedor de PhpMyAdmin
+        * Muestra la información detallada de las redes
+            $ docker network inspect world-app
+
 * TablePlus
     - Crear conexion a MariaDB (Click '+' | 'New Connection')
         > Connection's name: WorldDB
@@ -72,8 +84,7 @@ VOLÚMENES Y REDES
 
 * PhpMyAdmin
     - Connetar a la Base de Datos (Abri la URL: http://localhost:8080/ en el navegador)
-        > Server: 127.0.0.1
+        > Server: world-db          # NOTA: Copiar el valor del NAME del contenedor de la Base de Datos (Es el Host o Server) que se muestra al inspeccionar la red  
         > User: adrian
         > Password: adrian123
         Click 'Log in'
-        NOTA: Connection refused!!! 
