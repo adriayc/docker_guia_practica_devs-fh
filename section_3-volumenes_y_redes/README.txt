@@ -48,6 +48,15 @@ VOLÚMENES Y REDES
             > --env MARIADB_DATABASE=world-db \
             > --volume world-db:/var/lib/mysql \
             > mariadb:lts-ubi
+        
+        + Crear y ejecutar el contenedor PHPMyAdmin (Usage with arbitrary server)
+            $ docker container run \
+            > --name phpmyadmin \
+            > -d \ 
+            > -e PMA_ARBITRARY=1 \
+            > -p 8080:80 \
+            > phpmyadmin:5.2.3-apache
+            NOTA: Abre la URL: http://localhost:8080/ en el browser
 
 * TablePlus
     - Crear conexion a MariaDB (Click '+' | 'New Connection')
@@ -60,3 +69,11 @@ VOLÚMENES Y REDES
     - Ejecutar un consulta SQL (Click 'New SQL query' o CTRL + T)
         > Crear o pegar la consulta SQL                             # NOTA: Seleccionar una sección o toda y ejecutar la consulta SQL
         Click 'Run Current' o CTRL + Enter
+
+* PhpMyAdmin
+    - Connetar a la Base de Datos (Abri la URL: http://localhost:8080/ en el navegador)
+        > Server: 127.0.0.1
+        > User: adrian
+        > Password: adrian123
+        Click 'Log in'
+        NOTA: Connection refused!!! 
