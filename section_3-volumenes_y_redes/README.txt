@@ -4,7 +4,7 @@ VOLÚMENES Y REDES
     - Comandos
         + Descargar la image de MariaDB
             $ docker pull mariadb:lts-ubi
-        + Crear y ejecutar el contenedor
+        + Crear y ejecutar el contenedor (Sin persistencia de la data)
             $ docker container run --detach \
               > --name world-db \
               > -p 3306:3306 \
@@ -17,6 +17,37 @@ VOLÚMENES Y REDES
             $ docker container ls
         + Eliminar el contenedor
             $ docker container rm -f ef2ef0fc681d
+
+        + Crear un volumen
+            $ docker volume create world-db                     # Crear un espacio en el host (persistencia de la data)
+        + Listar volumenes
+            $ docker volume ls
+        + Mostar la información detallada del volumen
+            $ docker volume inspect world-db
+        + Crear y ejecutar el contenedor (Con persistencia de la data)
+            $ docker container run --detach \
+            > --name world-db \
+            > -p 3306:3306 \
+            > --env MARIADB_USER=adrian \
+            > --env MARIADB_PASSWORD=adrian123 \
+            > --env MARIADB_ROOT_PASSWORD=root123 \
+            > --env MARIADB_DATABASE=world-db \
+            > --volume world-db:/var/lib/mysql \
+            > mariadb:lts-ubi
+        + Listar contenedores en ejecución
+            $ docker container ls
+        + Eliminar el contenedor 
+            $ docker container rm -f 58b2cadbac2c
+        + Crear y ejecutar nuevamente el contenedor
+            $ docker container run --detach \
+            > --name world-db \
+            > -p 3306:3306 \
+            > --env MARIADB_USER=adrian \
+            > --env MARIADB_PASSWORD=adrian123 \
+            > --env MARIADB_ROOT_PASSWORD=root123 \
+            > --env MARIADB_DATABASE=world-db \
+            > --volume world-db:/var/lib/mysql \
+            > mariadb:lts-ubi
 
 * TablePlus
     - Crear conexion a MariaDB (Click '+' | 'New Connection')

@@ -73,6 +73,28 @@ En Linux, normalmente se instala directamente Docker Engine, por lo que Docker D
 
 Alpine Linux es una distribución de Linux muy ligera, segura y optimizada, diseñada para consumir pocos recursos. En Docker, se utiliza como imagen base para crear contenedores pequeños y rápidos.
 
+### Docker Volume
+
+Un Volumen (Docker Volume) es un mecanismo que permite almacenar datos de forma persistente, incluso si un contenedor se detiene, se elimina o se vuelve a crear.
+
+Por defecto, los datos que genera un contenedor se almacenan dentro de él. Si eliminas el contenedor, esos datos también se eliminan. Los volúmenes solucionan este problema guardando la información fuera del ciclo de la vida del contenedor.
+
+#### Tipos de almacenamiento en Docker
+
+Docker ofrece tres formas principales de almacenar datos en los contenedores:
+
+1. **Docker Volumes (Volúmenes adminstrados por Docker)**
+
+   Los Docker Volumes son el tipo de almacenamiento recomendado por Docker para datos persistentes.
+
+2. **Bind Mounts (Montajes de directorios del host)**
+
+   Los Bind Mounts conectan directamente una carpeta del sistema operativo con una carpeta dentro del contenedor.
+
+3. **tmpfs Mounts (Montajes en memoria RAM)**
+
+   Los tmpfs Mounts almacenan datos únicamente en la memoria RAM.
+
 ### Commandos
 
 - Descargar una imagen desde el registro oficial:
@@ -127,6 +149,15 @@ $ docker container run \
 > -e VAR_NAME=value \
 > -p PORT:PORT \
 > -d IMAGE_NAME
+
+# Usando volume (Persistencia de data)
+$ docker container run --detach \
+> --name CONTAINER-NAME \
+> -p PORT_HOST:PORT_CONTAINER \
+> --env VAR_NAME=VALUE \
+> --volume VOLUME-NAME:DATA_FILES_CONTAINER \            # Volúmenes nombrados o Docker Volumes
+> IMAGE_NAME
+# -v - enlazar un volumen (Compartir archivos entre tu host y el contenedor)
 ```
 
 - Listar contenedores
@@ -173,4 +204,22 @@ $ docker container rm -f $(docker ps -a -q)         # Eliminar todos los contene
 $ docker container rm -f [CONTAINER_ID | NAMES] [CONTAINER_ID | NAMES]         # Eliminar varios contenedores en ejecución
 
 $ docker container prune                            # Elimina todos los contenedores detenidos
+```
+
+- Crear un volumen
+
+```sh
+$ docker volume create VOLUME_NAME
+```
+
+- Lista volumnes
+
+```sh
+$ docker volume ls
+```
+
+- Mostrar información detallada del volumen
+
+```sh
+$ docker volume inspect [VOLUME_NAME]
 ```
