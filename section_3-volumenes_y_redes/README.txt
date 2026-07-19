@@ -70,6 +70,45 @@ VOLÚMENES Y REDES
         * Muestra la información detallada de las redes
             $ docker network inspect world-app
 
+        * Listar los contenedores
+            $ docker container ls
+        * Eliminar los contenedores de MariaDb y PhpMyAdmin
+            $ docker container rm -f 9f389e299689 9875110ecea1
+        * Listar las redes
+            $ docker network ls
+        * Crear y ejectuar el contenedor de MariaDB
+            $ docker container run --detach \
+            > --name world-db \
+            > -p 3306:3306 \
+            > --env MARIADB_USER=adrian \
+            > --env MARIADB_PASSWORD=adrian123 \
+            > --env MARIADB_ROOT_PASSWORD=root123 \
+            > --env MARIADB_DATABASE=world-db \
+            > --volume world-db:/var/lib/mysql \
+            > --network world-app \
+            > mariadb:lts-ubi
+        * Crear y ejectuar el contenedor de PhpMyAdmin
+            $ docker container run \
+            > --name phpmyadmin \
+            > -d \ 
+            > -e PMA_ARBITRARY=1 \
+            > -p 8080:80 \
+            > --network world-app \
+            > phpmyadmin:5.2.3-apache
+            NOTA: Abre la URL: http://localhost:8080/ en el browser
+        * Listar los contenedores
+            $ docker container ls
+        * Elinar los conenedores
+            $ docker container rm -f f95cef646a7a 6fc34e49d559
+        * Listar los volumenes
+            $ docker volume ls
+        * Eliminar los volumenes
+            $ docker volume rm world-db
+        * Listar las redes
+            $ docker network ls
+        * Eliminar las redes
+            $ docker network rm world-app
+
 * TablePlus
     - Crear conexion a MariaDB (Click '+' | 'New Connection')
         > Connection's name: WorldDB

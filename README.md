@@ -164,6 +164,16 @@ $ docker container run --detach \
 > --volume VOLUME-NAME:DATA_FILES_CONTAINER \            # Volúmenes nombrados o Docker Volumes
 > IMAGE_NAME
 # -v - enlazar un volumen (Compartir archivos entre tu host y el contenedor)
+
+# Redes de contenedores
+$ docker container run --detach \
+> --name CONTAINER-NAME \
+> -p PORT_HOST:PORT_CONTAINER \
+> --env VAR_NAME=VALUE \
+> --volume VOLUME-NAME:DATA_FILES_CONTAINER \
+> --network [NETWORK_ID | NAME]
+> IMAGE_NAME
+# -n - Conectar una red al contenedor
 ```
 
 - Listar contenedores
@@ -230,6 +240,12 @@ $ docker volume ls
 $ docker volume inspect [VOLUME_NAME]
 ```
 
+- Eliminar un volumen
+
+```sh
+$ docker volume rm [VOLUME_NAME]
+```
+
 - Crear un red
 
 ```sh
@@ -258,4 +274,10 @@ $ docker network inspect [NETWORK_ID | NAME]
 
 ```sh
 $ docker network prune
+```
+
+- Eliminar un red
+
+```sh
+$ docker network rm [NETWORK_ID | NAME]
 ```
