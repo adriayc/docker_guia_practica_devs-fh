@@ -126,6 +126,23 @@ VOLÚMENES Y REDES
         * Eliminar el contenedor
             $ docke container rm -f bab0bfb6a53d
 
+        * Ir a directorio de app de NestJS
+            $ cd {{DIR_NAME}}/nest-graphql
+        * Crear y arrancar el contenedor
+            $ docker container run -d \
+            --name nest-app \
+            -w /app \
+            -p 3000:3000
+            -v "$(pwd)":/app \                          // Bind volume
+            node:24.18.0-alpine3.23 \
+            sh -c "yarn install && yarn start:dev"      // Levanta un shell interna (Ejecuta comandos de NestJS)
+            TASK: Realizar cambios en la app de NestJS y probar el Bind Volume!!!
+            NOTA: Abre la URL: http://localhost:3000/graphql en el browser
+        * Listar contenedores
+            $ docker container ls
+        * Obtener los registros de un contenedor (Logs)
+            $ docker container logs -f e49b0385e0c6         // -f - sigue la salida del registro
+
 * TablePlus
     - Crear conexion a MariaDB (Click '+' | 'New Connection')
         > Connection's name: WorldDB
