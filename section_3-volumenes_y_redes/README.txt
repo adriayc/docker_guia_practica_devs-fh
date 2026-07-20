@@ -108,6 +108,8 @@ VOLÚMENES Y REDES
             $ docker network ls
         * Eliminar las redes
             $ docker network rm world-app
+        
+        Bind Volumes - vincular un directorio o archivo de tu máquina host directamente a un contenedor (debes especificar la ruta absoluta del host seguida de la ruta interna del contenedor).
 
 * TablePlus
     - Crear conexion a MariaDB (Click '+' | 'New Connection')
