@@ -174,6 +174,17 @@ $ docker container run --detach \
 > --network [NETWORK_ID | NAME]
 > IMAGE_NAME
 # -n - Conectar una red al contenedor
+
+# Bind volume
+$ docker container run \
+--name CONTAINER-NAME \
+-w /app \
+-p PORT_HOST:PORT_CONTAINER
+-v "ABSOLUTE_PATH_HOST:ABSOLUTE_PATH_CONTAINER" \           # Bind volume (E.g. -v /home/adriano/nest-app:/app)
+IMAGE_NAME:TAG \
+sh -c "COMMAND1 && COMMAND2"
+# -w - Directorio de trabajo dentro del contenedor
+# sh -c - Levanta una shell interna para ejecutar comandos
 ```
 
 - Listar contenedores

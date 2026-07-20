@@ -110,6 +110,21 @@ VOLÚMENES Y REDES
             $ docker network rm world-app
         
         Bind Volumes - vincular un directorio o archivo de tu máquina host directamente a un contenedor (debes especificar la ruta absoluta del host seguida de la ruta interna del contenedor).
+        * Ir a directorio de app de NestJS
+            $ cd {{DIR_NAME}}/nest-graphql
+        * Crear y arrancar el contenedor
+            $ docker container run \
+            --name nest-app \
+            -w /app \
+            -p 3000:3000
+            -v "$(pwd):/app" \                          // Bind volume
+            node:18-alpine3.21 \                        // NOTA: Versión compatible con el node engines de la app de NestJS
+            sh -c "yarn install && yarn start:dev"      // Levanta un shell interna (Ejecuta comandos de NestJS)
+            NOTA: Abre la URL: http://localhost:3000/graphql en el browser
+        * Listar contenedores
+            $ docker container ls
+        * Eliminar el contenedor
+            $ docke container rm -f bab0bfb6a53d
 
 * TablePlus
     - Crear conexion a MariaDB (Click '+' | 'New Connection')
