@@ -154,6 +154,14 @@ VOLÚMENES Y REDES
                     > Tecla 'Esc' + :wq! - para guardar y salir
                 NOTA: Modificar los archivos para probar el Bind Volume desde el lado del Contenedor
                 # exit                                  // Para salir de la Terminal Interativa
+        * Listar contenedores
+            $ docker container ls
+        * Eliminar el contenedor
+            $ docker container rm -f e49b0385e0c6
+        * Listar imagenes
+            $ docker image ls
+        * Eliminar todas las imagenes
+            $ docker image rm 5e4da409408f 8d6421d663b4 595398b0081e b68f318c5fd8
 
 * TablePlus
     - Crear conexion a MariaDB (Click '+' | 'New Connection')
