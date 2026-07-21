@@ -1,0 +1,66 @@
+POSTGRES + PGADMIN
+
+Docker Hub
+    * Postgres
+    * pgAdmin4
+
+Instrucciones:
+1. Crear un volumen para almacenar la información de la base de datos
+```sh
+$ docker volume create postgres-db
+```
+
+2. Montar la imagen de postgres
+```sh
+$ docker container run \
+-d \
+--name postgres-db \
+-e POSTGRES_PASSWORD=pgadmin123
+-v postgres-db:/PATH/DATABASE \
+postgres:15.1
+```
+
+NOTA: No hay puerto publicado -p, lo que hará imposible acceder a la base de datos con TablePlus.
+
+3. Montar la image de pgAdmin
+```sh
+$ docker container run \
+--name phAdmin \
+-e PGADMIN_DEFAULT_EMAIL=pgadmin@mail.com
+-e PGADMIN_DEFAULT_PASSWORD=pgadmin123
+-p 8080:80 \
+-d dpage/pgadmin4:6.17
+```
+
+4. Ingresar a la web con las credenciales a pgAdmin
+URL: http://localhost:8080/
+
+5. Intentar crear la conexión a la base de datos
+    1. Click en Servers
+    2. Click en Register > Server
+    3. Colocar el nombre de: "SuperHeroesDB" (el nombre no importa)
+    4. Ir a la pestaña de connection 
+    5. Colocar el hostname "postgres-db" (el mismo nombre que le dimos al contenedor)
+    6. Username es "postgres" y el password: postgres123
+    7. Probar la conexión
+
+    NOTA: Ohhh no!, no vemos la base de datos, se nos olvidó la red.
+
+6. Crear la red
+```sh
+$ docker network create postgres-net
+```
+
+7. Listar los contenedores
+```sh
+$ docker container ls
+```
+
+8. Conectar ambos contenedores
+```sh
+$ docker network connect postgres-net CONTAINER_ID_POSTGRES
+$ docker network connect postgres-net CONTAINER_ID_PGADMIN
+```
+
+9. Intentar el paso 4 de nuevo
+Si logra establecer la conexión, todo está correcto, proceder a crea una base de datos, schemas, tablas, insertar registros, lo que sea.
