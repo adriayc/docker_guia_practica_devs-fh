@@ -143,6 +143,18 @@ VOLÚMENES Y REDES
         * Obtener los registros de un contenedor (Logs)
             $ docker container logs -f e49b0385e0c6         // -f - sigue la salida del registro
 
+        * Listar contenedores
+            $ docker container ls
+        * Ejecutar un comando en un contenedor en ejecución
+            $ docker container exec -it
+                # ls -l                 // Lista de todos directorio y archivos (File System del contenedor)
+                # cd src/hello-world/
+                # vi hello-world.resolver.ts            // Modificar el archivo
+                    > Tecla 'i' - para modificar
+                    > Tecla 'Esc' + :wq! - para guardar y salir
+                NOTA: Modificar los archivos para probar el Bind Volume desde el lado del Contenedor
+                # exit                                  // Para salir de la Terminal Interativa
+
 * TablePlus
     - Crear conexion a MariaDB (Click '+' | 'New Connection')
         > Connection's name: WorldDB

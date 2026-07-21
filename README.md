@@ -214,6 +214,16 @@ $ docker container stop [CONTAINER_ID | NAMES]
 $ docker container start [CONTAINER_ID | NAMES]
 ```
 
+- Ejecutar un comando de un contenedor en ejecución
+
+```sh
+$ docker container exec -it [CONTAINER_ID | NAMES] EXECUTABLE        # -it - interative terminal
+# -i - Mantén STDIN abierto aunque no esté conectado
+# -t - Asignar un pseudo-TTY
+$ docker container exec -it [CONTAINER_ID | NAMES] bash
+$ docker container exec -it [CONTAINER_ID | NAMES] /bin/sh
+```
+
 - Obtener los logs de un contenedor
 
 ```sh

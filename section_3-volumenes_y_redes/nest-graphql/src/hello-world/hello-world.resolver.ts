@@ -7,7 +7,7 @@ export class HelloWorldResolver {
     name: 'hello',
   })
   helloWorld(): string {
-    return 'Hola Mundo - Modificación para probar el Bind Volume';
+    return 'Hola Mundo - Modificación para probar el Bind Volume (Desde el Contenedor)';
   }
 
   @Query(() => Float, { name: 'randomNumber' })
