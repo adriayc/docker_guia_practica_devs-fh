@@ -25,4 +25,9 @@ services:
 volumes:
   # Crea el volumen si aún no existe. De lo contrario, utiliza el volumen existente y vuelve a crear si se elimina manualmente
   # fuera del Compose. (postgre-data: A secas)
+  # postgres-db:
+
+  # La opcion `external` especifica que este volumen ya existe en la plataforma y que su ciclo de vida se gestiona independientemente
+  # de la aplicación. En este caso, Compose no crea el volumen y devuelve un error si no existe.
   postgres-db:
+    external: true

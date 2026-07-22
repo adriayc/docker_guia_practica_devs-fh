@@ -318,3 +318,9 @@ Nomenclatura de los contanedores usados en el Docker Compose: `<project-name>_<s
 ```sh
 $ docker compose up
 ```
+
+- Detener y eliminar contenedores y redes
+
+```sh
+$ doocker compose down
+```

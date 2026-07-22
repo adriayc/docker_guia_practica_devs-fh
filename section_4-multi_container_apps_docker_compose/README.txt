@@ -46,6 +46,15 @@ DOCKER COMPOSE (MULTI-CONTAINER APPS)
             * Abrir la URL: http://localhost:8080/ en el browser (Probar pgAdmin)
             * Listar redes
                 $ docker volume ls
+            * Agregar `external: true` en volume del `docker-compose.yml` (Volumen externo que ya existe en la plataforma)
+            * Crear y poner en marcha los contenedores
+                $ docker compose up
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
+            * Eliminar un volumen
+                $ docker volume rm postgres-pgadmin_postgres-db
+            * Eliminar los volumenes locales no utilizado
+                $ docker volume prune
 
 * pgAdmin (URL: http://localhost:8080/)
     * Login
