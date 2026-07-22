@@ -322,5 +322,13 @@ $ docker compose up
 - Detener y eliminar contenedores y redes
 
 ```sh
-$ doocker compose down
+$ docker compose down
+$ docker compose down -d   # -d - Modo independiente: Ejecutar los contenedores en segundo plano.
+```
+
+- Ver la salida de los contenedores (Logs)
+
+```sh
+$ docker compose logs
+$ docker compose logs -f      # -f - Siga la salida del registro
 ```

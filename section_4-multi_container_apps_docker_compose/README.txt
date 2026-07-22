@@ -56,6 +56,27 @@ DOCKER COMPOSE (MULTI-CONTAINER APPS)
             * Eliminar los volumenes locales no utilizado
                 $ docker volume prune
 
+            Bind Volume
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
+            * Listar volumenes
+                $ docker volume ls
+            * Eliminar los volumens locales no utilizados
+                $ docker volume prune
+            * Eliminar un volumen
+                $ docker volume rm postgres-db
+            * Moficar el archivo `docker-compose.yml` (Bind Volume)
+            * Crear y poner en marcha los contenedores
+                $ docker compose up
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
+            * Configurar volume en servicio de `pgAdmin`.
+            * Crear y poner en marcha los contenedores (Modo detach)
+                $ docker compose up -d
+            * Detener y eliminar, y Crear y poner en marcha los contenedores nuevamente para probar el Bind Volume de pgAdmin.
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
+
 * pgAdmin (URL: http://localhost:8080/)
     * Login
         > Email Address/Username: pgadmin@mail.com
