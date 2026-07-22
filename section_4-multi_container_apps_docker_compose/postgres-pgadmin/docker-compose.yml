@@ -1,0 +1,23 @@
+# Versión a usar en el docker-compose
+# version: "3" # Obsolete
+
+services:
+  # Postgres
+  db:
+    container_name: postgres_database
+    image: postgres:17.10
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=postgres123
+
+  # pgAdmin4
+  pgAdmin:
+    depends_on:
+      - db # Depende del servicio 'db'
+    image: dpage/pgadmin4:9.15.0
+    ports:
+      - "8080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin@mail.com
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin123

@@ -302,3 +302,9 @@ $ docker network prune
 ```sh
 $ docker network rm [NETWORK_ID | NAME]
 ```
+
+## Docker Compose
+
+Docker Compose es una herramienta de Docker que permite definir, configurar y ejecutar apliacaciones compuestas por múltiples contenedores utilizando un único archivo de configuración llamado `compose.yaml` (o `docker-compose.yml` en proyectos antiguos).
+
+En lugar de ejecutar cada contenedor manulmente con varios compandos `docker run`, Docker Compose te permite describir toda la apliación en un solo archivo y levantarla con un único comando.
