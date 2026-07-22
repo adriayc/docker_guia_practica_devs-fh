@@ -76,6 +76,16 @@ DOCKER COMPOSE (MULTI-CONTAINER APPS)
             * Detener y eliminar, y Crear y poner en marcha los contenedores nuevamente para probar el Bind Volume de pgAdmin.
             * Detener y eliminar contenedores y redes
                 $ docker compose down
+        
+        + Pokemo App (Mongo)
+            * Crear el archivo `docker-compose.yml` con el servicio de Mongo.
+            * Navegar la ruta del archivo `docker-compose.yml`.
+                $ cd PATH/pokemon-app
+            * Crear y poner en marcha los contenedores
+                $ docker compose up
+            * NOTA: Crear una conexión de MongoDB con TablePlus.
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
 
 * pgAdmin (URL: http://localhost:8080/)
     * Login
@@ -110,3 +120,10 @@ DOCKER COMPOSE (MULTI-CONTAINER APPS)
     * Add Row (Select 'Hereos' table > Click 'All Rows' o ALT + SHIFT + v > Click '+')
         > Name: Superman
         Click 'Save Data Changes' o F6
+
+* TablePlus (MongoDB)
+    - Crear una nueva conexión
+        > Connection's name: PokemonDB
+        > MongoDB
+        > Connection URL: mongodb://localhost:27017/
+        Click 'Test' | 'Save' | 'Connect'

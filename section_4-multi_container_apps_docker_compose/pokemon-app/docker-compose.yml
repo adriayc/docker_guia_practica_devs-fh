@@ -1,0 +1,15 @@
+services:
+  db:
+    container_name: pokemon_db
+    image: mongo:8.3.4
+    volumes:
+      - pokedata:/data/db
+    ports:
+      - 27017:27017
+    restart: always
+
+volumes:
+  # La opción `external: false` le indica a Compose que administre el ciclo de vida del recurso (volumen, red o secreto)
+  # automáticamente (Es la opción por defecto, casi nunca es necesario escribirlo explicitamente).
+  pokedata:
+    external: false
