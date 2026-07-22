@@ -35,6 +35,18 @@ DOCKER COMPOSE (MULTI-CONTAINER APPS)
             * Eliminar contenedores
                 $ docker container rm -f 17c186667e54 7f60707af210
 
+* Docker Compose
+    - Comandos
+        + Postgres + pgAdmin
+            * Crear el archivo `docker-compose.yml` con los servicios.
+            * Navegar la ruta del archivo `docker-compose.yml`.
+                $ cd PATH/postgres-pgadmin
+            * Crear y poner en marcha los contenedores
+                $ docker compose up
+            * Abrir la URL: http://localhost:8080/ en el browser (Probar pgAdmin)
+            * Listar redes
+                $ docker volume ls
+
 * pgAdmin (URL: http://localhost:8080/)
     * Login
         > Email Address/Username: pgadmin@mail.com

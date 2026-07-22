@@ -7,7 +7,7 @@ services:
     container_name: postgres_database
     image: postgres:17.10
     volumes:
-      - postgres-db:/var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/data # Named Volumen
     environment:
       - POSTGRES_PASSWORD=postgres123
 
@@ -21,3 +21,8 @@ services:
     environment:
       - PGADMIN_DEFAULT_EMAIL=pgadmin@mail.com
       - PGADMIN_DEFAULT_PASSWORD=pgadmin123
+
+volumes:
+  # Crea el volumen si aún no existe. De lo contrario, utiliza el volumen existente y vuelve a crear si se elimina manualmente
+  # fuera del Compose. (postgre-data: A secas)
+  postgres-db:
