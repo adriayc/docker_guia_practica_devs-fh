@@ -120,6 +120,28 @@ DOCKER COMPOSE (MULTI-CONTAINER APPS)
             * Abrir la URL: http://localhost:8081/ de `mongo-express` en el browser.
             * Detener y eliminar contenedores y redes
                 $ docker compose down
+            
+            * Agregar el servicio `poke-app`.
+            * Crear y poner en marcha los contenedores (Modo detach)
+                $ docker compose up -d
+            * Cargar una semilla con la data inicial (URL: http://localhost:3000/api/v2/seed).
+            * Consultar el listado de pokemos (URL: http://localhost:3000/api/v2/pokemon?limit=10&offset=1).
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
+            * Eliminar los volumenes no utilizados
+                $ docker volume prune
+            * Listar volumenes
+                $ docker volume ls
+            * Eliminar el volumne
+                $ docker volume rm pokemon-app_pokedata
+            * Listar redes
+                $ docker network ls
+            * Eliminar las redes no utilizada
+                $ docker network prune
+            * Listar imagenes
+                $ docker image ls
+            * Eliminar todas las imagenes
+                $ docker image rm cefc4cc6b7d9 ee1093961251 1b23d7976f02 ...
 
 * pgAdmin (URL: http://localhost:8080/)
     * Login

@@ -29,6 +29,19 @@ services:
       - 8081:8081
     restart: always
 
+  # Pokemon App (Nest + MongoDB)
+  poke-app:
+    depends_on:
+      - db
+      - mongo-express
+    image: klerith/pokemon-nest-app:1.0.0
+    ports:
+      - 3000:3000
+    environment:
+      - MONGODB=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@${MONGO_INITDB_NAME}:27017 # mongodb://username:password@localhost:27017
+      - DB_NAME=${MONGO_INITDB_NAME}
+    restart: always
+
 volumes:
   # La opción `external: false` le indica a Compose que administre el ciclo de vida del recurso (volumen, red o secreto)
   # automáticamente (Es la opción por defecto, casi nunca es necesario escribirlo explicitamente).
