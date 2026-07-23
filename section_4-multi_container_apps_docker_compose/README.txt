@@ -86,6 +86,32 @@ DOCKER COMPOSE (MULTI-CONTAINER APPS)
             * NOTA: Crear una conexión de MongoDB con TablePlus.
             * Detener y eliminar contenedores y redes
                 $ docker compose down
+            
+            * Agregamos las variables de authenticacion database en el servio de MongoDB.
+            * Crear y poner en marcha los contenedores (Modo detach)
+                $ docker compose up -d
+            * NOTA: No se puede crear una conexión de la Database con TablePlus (With authentication)!!!
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
+            * Listar volumenes
+                $ docker volume ls
+            * Elimar el volumen
+                $ docker volume rm pokemon-app_pokedata
+            * Crear y poner en marcha los contenedores (Modo detach)
+                $ docker volume up -d
+            * Definir las variables de entorno y accederlo desde el archivo `docker-compose.yml`.
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
+            * Eliminar los volumenes no utilizados
+                $ docker volume prune
+            * Listar volumenes
+                $ docker volume ls
+            * Eliminar el volumne
+                $ docker volume rm pokemon-app_pokedata
+            * Crear y poner en marcha los contenedores (Modo detach)
+                $ docker compose up -d
+            * Crear la conexión de MongoDB con TablePlus nuevamente (With authentication).
+
 
 * pgAdmin (URL: http://localhost:8080/)
     * Login
@@ -125,5 +151,5 @@ DOCKER COMPOSE (MULTI-CONTAINER APPS)
     - Crear una nueva conexión
         > Connection's name: PokemonDB
         > MongoDB
-        > Connection URL: mongodb://localhost:27017/
+        > Connection URL: mongodb://localhost:27017/ | mongodb://root:root123@localhost:27017 (With authentication)
         Click 'Test' | 'Save' | 'Connect'

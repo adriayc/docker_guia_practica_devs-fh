@@ -1,12 +1,18 @@
 services:
   db:
-    container_name: pokemon_db
+    # container_name: pokemon_db
+    container_name: ${MONGO_INITDB_NAME}
     image: mongo:8.3.4
     volumes:
       - pokedata:/data/db
     ports:
       - 27017:27017
     restart: always
+    environment:
+      # - MONGO_INITDB_ROOT_USERNAME=root
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    command: ["--auth"]
 
 volumes:
   # La opción `external: false` le indica a Compose que administre el ciclo de vida del recurso (volumen, red o secreto)
