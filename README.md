@@ -101,6 +101,12 @@ Una Container Network (o red de contenedores) es un mecanismo de Docker que perm
 
 Sin un red, los contenedores estarían completamente aislados y no podrían intercambiar información.
 
+### Dockerfile
+
+Un Dockerfile es un archivo de texto que contiene un conjunto de instrucciones para construir una imagen de Docker de forma automática.
+
+En otras palabras, un Dockerfile describe paso a paso cómo crear una imagen que incluya tu aplicaición, sus dependencias y las configuración necesaria para ejecutarse.
+
 ### Commandos
 
 - Descargar una imagen desde el registro oficial:
