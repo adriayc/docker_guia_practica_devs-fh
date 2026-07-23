@@ -112,6 +112,14 @@ DOCKER COMPOSE (MULTI-CONTAINER APPS)
                 $ docker compose up -d
             * Crear la conexión de MongoDB con TablePlus nuevamente (With authentication).
 
+            * Agregamos el servicio `mongo-express`.
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
+            * Crear y poner en marcha los contenedores (Modo detach)
+                $ docker compose up -d
+            * Abrir la URL: http://localhost:8081/ de `mongo-express` en el browser.
+            * Detener y eliminar contenedores y redes
+                $ docker compose down
 
 * pgAdmin (URL: http://localhost:8080/)
     * Login
