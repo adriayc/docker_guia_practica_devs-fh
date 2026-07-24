@@ -22,3 +22,15 @@ DOCKERFILE (CREAR IMÁGENES)
 
             Dockerfile
             * Crear el archivo `Dockerfile` y construir la imagen.
+            * Crear una imagen a partir de un Dockerfile
+                $ docker image build --tag cron-ticker .        # --tag name:tag (el tag es `latest` si no se define) y PATH (. esta en el directorio de trabajo actual) del `Dockerfile`
+                $ docker build --tag cron-ticker .
+            * Listar imagenes
+                $ docker image ls
+            * Crear y ejecuta una nuevo contenedor a partir de una imagen
+                $ docker container run cron-ticker
+            * Detener la ejecución con `CTRL + C`.
+            * Listar imagenes
+                $ docker image ls
+            * Eliminar el contenedor
+                $ docker container rm -f 21cb5e65bc8f

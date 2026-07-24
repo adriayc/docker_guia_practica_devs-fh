@@ -109,12 +109,16 @@ En otras palabras, un Dockerfile describe paso a paso cómo crear una imagen que
 
 ### Commandos
 
+#### Pull
+
 - Descargar una imagen desde el registro oficial:
 
 ```sh
 $ docker pull IMAGEN_NAME
 $ docker pull IMAGEN_NAME:TAG       # Versión específica
 ```
+
+#### Image
 
 - Listar imagenes
 
@@ -139,6 +143,17 @@ $ docker rmi -f $(docker images -a -q)      # Eliminar todas las images (Primero
 
 $ docker image pruna                        # Elimina imágenes no utilizadas
 ```
+
+- Construir una imagen a partir de un Dockerfile
+
+```sh
+$ docker image build --tag IMAGE_NAME:TAG PATH
+# --tag - nombre y un etiqueta (Opcional, por defecto es `latest` si no se define) en formato `name:tag`
+# PATH - ruta del `Dockerfile`
+$ docker build --tag IMAGE_NAME:TAG PATH
+```
+
+#### Container
 
 - Ejecutar una image y crear un contenedor:
 
@@ -249,6 +264,8 @@ $ docker container rm -f [CONTAINER_ID | NAMES] [CONTAINER_ID | NAMES]         #
 $ docker container prune                            # Elimina todos los contenedores detenidos
 ```
 
+#### Volume
+
 - Crear un volumen
 
 ```sh
@@ -272,6 +289,8 @@ $ docker volume inspect [VOLUME_NAME]
 ```sh
 $ docker volume rm [VOLUME_NAME]
 ```
+
+#### Network
 
 - Crear un red
 

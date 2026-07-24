@@ -6,3 +6,9 @@ WORKDIR /app
 
 # Copiar archivos y directorios
 COPY app.js package.json ./
+
+# Ejecutar comandos de compilación (Instalar dependencias)
+RUN npm install
+
+# Especifique los comandos predeterminados (Ejecuta la app)
+CMD [ "node", "app.js" ]
