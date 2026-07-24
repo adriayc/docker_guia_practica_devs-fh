@@ -5,10 +5,12 @@ FROM node:24.18.0-alpine3.24
 WORKDIR /app        
 
 # Copiar archivos y directorios
-COPY app.js package.json ./
+COPY package.json ./
 
 # Ejecutar comandos de compilación (Instalar dependencias)
 RUN npm install
+
+COPY app.js ./
 
 # Especifique los comandos predeterminados (Ejecuta la app)
 CMD [ "node", "app.js" ]
