@@ -19,3 +19,6 @@ DOCKERFILE (CREAR IMÁGENES)
             * Ejecutar la app nuevamente
                 $ npm start
             * Detener la ejecución con `CTRL + C`.
+
+            Dockerfile
+            * Crear el archivo `Dockerfile` y construir la imagen.
