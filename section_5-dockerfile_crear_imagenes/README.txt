@@ -89,4 +89,16 @@ DOCKERFILE (CREAR IMÁGENES)
                 $ docker image tag adriayc/cron-ticker:latest adriayc/cron-ticker:castor
             * Subir una imagen a un registro
                 $ docker push adriayc/cron-ticker:castor
+
+            Descargar imagen de Docker Hub
+            * Eliminar imágenes no utilizadas
+                $ docker image prune
+            * Eliminar todas las imágenes no utilizadas
+                $ docker image prune -a
+            * Crear y ejecutar un nuevo contenedor a partir de una imagen del Hub
+                $ docker container run adriayc/cron-ticker:castor
+            * Listar contenedores
+                $ docker container ls
+            * Eliminar contenedores
+                $ docker container rm -f fec9bf465fca
             
