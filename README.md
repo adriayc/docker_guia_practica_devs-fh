@@ -107,6 +107,10 @@ Un Dockerfile es un archivo de texto que contiene un conjunto de instrucciones p
 
 En otras palabras, un Dockerfile describe paso a paso cómo crear una imagen que incluya tu aplicaición, sus dependencias y las configuración necesaria para ejecutarse.
 
+### .dockerignore
+
+Un `.dockerignore` es un archivo de texto que le indica a Docker qué archivos y carpetas debe excluir del contexto de compilación al ejecutar un comando `docker build`.
+
 ### Commandos
 
 #### Pull

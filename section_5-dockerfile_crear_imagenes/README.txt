@@ -131,3 +131,14 @@ DOCKERFILE (CREAR IMÁGENES)
                 $ docker exec -it a087323548c0 /bin/sh
                 > /app # ls -l                  // Listar archivos y directorios
                 > /app # exit                   // Para salir
+            
+            Archivo `.dockerignore`
+            * Crear y agregar los directorios & archivos en el `.dockerignore`.
+            * Construir la iamge a partir de un Dockerfile
+                $ docker build -t adriayc/cron-ticker:tigre .
+            * Crea y ejecuta un nuevo contenedor a partir de una imagen
+                $ docker container run -d adriayc/cron-ticker:tigre         // Modo detach 
+            * Ejecutar un comando en un contenedor en ejecución
+                $ docker exec -it 00cb7ae5cfce /bin/sh
+                > /app # ls -la                 // Mostrar todos los archivos y directorios
+                > /app # exit                   // Para Salir
