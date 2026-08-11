@@ -178,3 +178,26 @@ DOCKERFILE (CREAR IMÁGENES)
                 $ docker image ls
             * Subir imagen a Hub
                 $ docker push adriayc/cron-ticker
+
+            Construcción en multiples arquitecturas (Buildx)
+            * Lista las instancias de builder
+                $ docker buildx ls
+            * Crear y usa un custom builder
+                $ docker buildx create \
+                --name my-builder \
+                --driver docker-container \
+                --bootstrap --use
+            * Lista las instancias de builder
+                $ docker buildx ls
+            * Establece la instancia actual de builder
+                $ docker buildx use my-builder
+            * Inspeccionar la instanacia actual de builder
+                $ docker buildx inspect my-builder
+            * Agregar el `--platform=$BUILDPLATFORM` en el Dockerfile.
+            * Iniciar una construcción y sube al Hub
+                $ docker buildx build \
+                --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v8 \
+                -t adriayc/cron-ticker:polar --push .
+                $ docker buildx build \
+                --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v8 \
+                -t adriayc/cron-ticker:latest --push .                              // Es recomendable subir la versión `latest` después de una version específica.

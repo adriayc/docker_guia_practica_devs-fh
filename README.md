@@ -154,6 +154,9 @@ $ docker image pruna                        # Elimina imágenes no utilizadas
 $ docker image build --tag IMAGE_NAME:TAG PATH
 # --tag - nombre y un etiqueta (Opcional, por defecto es `latest` si no se define) en formato `name:tag`
 # PATH - ruta del `Dockerfile`
+$ docker image build --no-cache --tag IMAGE_NAME:TAG PATH
+# --no-cache - no utiliza la caché al crear la imagen
+
 $ docker build --tag IMAGE_NAME:TAG PATH
 ```
 
@@ -330,6 +333,54 @@ $ docker network prune
 
 ```sh
 $ docker network rm [NETWORK_ID | NAME]
+```
+
+## Docker Buildx
+
+Docker Buildx es una herramienta de Docker que proporciona capacidades avanzadas para construir imágenes de contenedoress. Está basada en BuildKit, el motor moderno de construcción de Docker.
+
+En pocas palabras: `docker build` construye imágenes; `docker buildx` permite hacer construcciones más avanzadas rápidas y multiplataformas.
+
+### Comandos
+
+- Crear una nueva instancia builder
+
+```sh
+$ docker buildx create --name NAME --driver DRIVER --bootstrap --use
+# --name - nombre de la instancia builder
+# --driver - controlador a utilizar (disponible: docker-container, kubernetes, remotes)
+# --bootstrap - builder de arranque después de la creación
+# --use - establece la instancia actual de builder
+```
+
+- Establecer la instancia actual de builder
+
+```sh
+$ docker builx use NAME
+```
+
+- Listar las instanacias builder
+
+```sh
+$ docker buildx ls
+```
+
+- Inspecciona la instancia actual del builder
+
+```sh
+$ docker buildx inspect [NAME]
+```
+
+- Iniciar una construcción
+
+```sh
+$ docker buildx build --platform=VALUE[,VALUE] -t REGISTRY/REPOSITORY:TAG --push .
+# --platform - establece la plataforma de destino para el build
+# -t - identificador de imagen (formato: registry/repository:tag)
+# --push - subir automáticamente al registry
+# . - estable el archivo `Dockerfile`
+$ docker buildx build --no-cache --platform=VALUE[,VALUE] -t REGISTRY/REPOSITORY:TAG --push .
+# --no-cache - no utilice caché al crear la imagen
 ```
 
 ## Docker Compose
