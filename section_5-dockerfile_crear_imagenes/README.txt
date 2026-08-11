@@ -160,3 +160,13 @@ DOCKERFILE (CREAR IMÁGENES)
                 > /app # ls -la                 // Mostrar todos los archivos y directorios
                 > /app # exit                   // Para Salir
             
+            Subir imagen a Hub
+            * Listar imagenes
+                $ docker image ls
+            * Crear un nuevo alias o etiqueta para una imagen local
+                $ docker image tag adriayc/cron-ticker:pantera adriayc/cron-ticker:latest
+            * Subir imagenes a Hub
+                $ docker push adriayc/cron-ticker:mapache
+                $ docker push adriayc/cron-ticker:pantera
+                $ docker push adriayc/cron-ticker:latest
+            
