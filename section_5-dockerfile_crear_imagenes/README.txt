@@ -62,3 +62,31 @@ DOCKERFILE (CREAR IMÁGENES)
                 $ docker container ls
             * Eliminar los contenedores
                 $ docker container rm -f 6ed3e756ded3 9da6bf1effbe
+
+            Subir image a Docker Hub
+            * Sign up / Sign in
+            * Create a new respository (My Hub > Repositories > Click 'Create respository')
+                > Repository Name: cron-ticker
+                > Short description: {{ADD_SHORT_DESCRIPTION}}
+                > [TRUE] Public
+                Click 'Create'
+            * Listar imagenes
+                $ docker image ls
+            * Crear un nuevo alias o etiqueta para una imagen local
+                $ docker image tag cron-ticker:latest adriayc/cron-ticker:latest
+                $ docker image tag cron-ticker adriayc/cron-ticker                      // Si no especificamos el TAG es `latest`
+            * Login en Hub
+                $ docker login
+            * Cerrar sessión en Hub (Optional)
+                $ docker logout
+            * Subir una imagen a un registro
+                $ docker push adriayc/cron-ticker:latest
+                $ docker push adriayc/cron-ticker                                       // Si no especificamos el TAG es `latest`
+            * Habilitar el análisis de imagenes (MY_IMAGE > Settings > Image security insight settings)
+                > [TRUE] Select Docker Scout iamge analysis
+                Click 'Save'
+            * Crear un nuevo alias o etiqueta para una imagen local
+                $ docker image tag adriayc/cron-ticker:latest adriayc/cron-ticker:castor
+            * Subir una imagen a un registro
+                $ docker push adriayc/cron-ticker:castor
+            
