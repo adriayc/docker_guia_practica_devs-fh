@@ -1,5 +1,6 @@
 # Crear una nueva escenario de compilación a partir de una imagen base
 FROM node:24.18.0-alpine3.24
+# FROM --platform=linux/amd64 node:24.18.0-alpine3.24 AS node_amd64
 
 # Cambiar directorio de trabajo ('/app' - ruta creada por node)
 WORKDIR /app        

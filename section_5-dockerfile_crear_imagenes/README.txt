@@ -170,3 +170,11 @@ DOCKERFILE (CREAR IMÁGENES)
                 $ docker push adriayc/cron-ticker:pantera
                 $ docker push adriayc/cron-ticker:latest
             
+            Forzar una plataforma de construcción
+            * Especificar la plataforma en `Dockefile`.
+            * Construir la iamge a partir de un Dockerfile
+                $ docker build -t adriayc/cron-ticker .             // Si no especificamos el TAG será `latest`
+            * Listar imagenes
+                $ docker image ls
+            * Subir imagen a Hub
+                $ docker push adriayc/cron-ticker
