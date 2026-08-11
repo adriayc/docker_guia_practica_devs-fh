@@ -120,3 +120,14 @@ DOCKERFILE (CREAR IMÁGENES)
             * Construir una imagen a partir de un Dockerfile
                 $ docker build -t adriayc/cron-ticker:mapache .
             
+            Examinar la imagen
+            * Mostrar imagenes
+                $ docker image ls
+            * Crea y ejecuta un nuevo contenedor a partir de una imagen
+                $ docker container run -d adriayc/cron-ticker:mapache       // Modo detach 
+            * Listar contenedores
+                $ docker container ls
+            * Ejecutar un comando en un contenedor en ejecución
+                $ docker exec -it a087323548c0 /bin/sh
+                > /app # ls -l                  // Listar archivos y directorios
+                > /app # exit                   // Para salir
