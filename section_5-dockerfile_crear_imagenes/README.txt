@@ -142,3 +142,21 @@ DOCKERFILE (CREAR IMÁGENES)
                 $ docker exec -it 00cb7ae5cfce /bin/sh
                 > /app # ls -la                 // Mostrar todos los archivos y directorios
                 > /app # exit                   // Para Salir
+
+            Remover archivos y carpetas de la imagen
+            * Listar los contenedores
+                $ docker container ls
+            * Eliminar los contenedores
+                $ docker container rm -f 8d6821941297 a087323548c0
+            * Eliminar los archivos innecesario e instalar dependencias solo de Producción en `Dockerfile`.
+            * Construir la iamge a partir de un Dockerfile
+                $ docker build -t adriayc/cron-ticker:pantera .
+            * Crea y ejecuta un nuevo contenedor a partir de una imagen
+                $ docker container run -d adriayc/cron-ticker:pantera         // Modo detach 
+            * Listar contenedores
+                $ docker container ls
+            * Ejecutar un comando en un contenedor en ejecución
+                $ docker exec -it a6e0b780828f /bin/sh
+                > /app # ls -la                 // Mostrar todos los archivos y directorios
+                > /app # exit                   // Para Salir
+            

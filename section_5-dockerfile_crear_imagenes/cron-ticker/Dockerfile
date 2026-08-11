@@ -16,5 +16,13 @@ COPY . .
 # Realizar testing (Jest)
 RUN npm run test
 
+
+# Eliminar archivos y directorios innecesarios de PROD
+RUN rm -rf tests && rm -rf node_modules
+
+# Instalar unicamente las dependencias de PROD
+RUN npm install ---prod
+
+
 # Especifique los comandos predeterminados (Ejecuta la app)
 CMD [ "node", "app.js" ]
