@@ -102,3 +102,14 @@ DOCKERFILE (CREAR IMÁGENES)
             * Eliminar contenedores
                 $ docker container rm -f fec9bf465fca
             
+            Pruebas automáticas al código
+            * Instalar la dependencia de Jest (Pruebas para JavaScript)
+                $ npm install --save-dev jest
+            * Modificar el código.
+            * Ejecutar la app
+                $ npm run start
+                $ npm start
+            * Agregar la pruebas al código.
+            * Ejecutar la test
+                $ npm run test
+            
