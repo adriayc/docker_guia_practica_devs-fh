@@ -112,4 +112,11 @@ DOCKERFILE (CREAR IMÁGENES)
             * Agregar la pruebas al código.
             * Ejecutar la test
                 $ npm run test
+
+            Integrar testing en la construcción
+            * Agregar `RUN npm run test` en Dockerfile.
+            * Listar imagenes
+                $ docker image ls
+            * Construir una imagen a partir de un Dockerfile
+                $ docker build -t adriayc/cron-ticker:mapache .
             

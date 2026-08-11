@@ -10,7 +10,11 @@ COPY package.json ./
 # Ejecutar comandos de compilación (Instalar dependencias)
 RUN npm install
 
-COPY app.js ./
+# Copiar archivos y directorios al WORKDIR
+COPY . .
+
+# Realizar testing (Jest)
+RUN npm run test
 
 # Especifique los comandos predeterminados (Ejecuta la app)
 CMD [ "node", "app.js" ]
