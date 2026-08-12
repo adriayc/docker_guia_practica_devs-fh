@@ -391,6 +391,12 @@ $ docker buildx build --no-cache --platform=VALUE[,VALUE] -t REGISTRY/REPOSITORY
 # --no-cache - no utilice caché al crear la imagen
 ```
 
+- Mostrar detalles de una imagen en el registro
+
+```sh
+$ docker buildx imagetools inspect REGISTRY/REPOSITORY:TAG
+```
+
 ## Docker Compose
 
 Docker Compose es una herramienta de Docker que permite definir, configurar y ejecutar apliacaciones compuestas por múltiples contenedores utilizando un único archivo de configuración llamado `compose.yaml` (o `docker-compose.yml` en proyectos antiguos).

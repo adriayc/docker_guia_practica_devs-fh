@@ -39,3 +39,24 @@ MULTI-STAGE BUILD
                     * Subir una imagen al registro
                         $ docker push adriayc/cron-ticker:gato
                         $ docker push adriayc/cron-ticker:latest
+                - Buildx construir para otras arquitecturas
+                    * Listar las intefaces builder
+                        $ docker buildx ls
+                    * Crear una nueva instancia personalizada de builder
+                        $ docker buildx create \
+                        --name my-builder \
+                        --driver docker-container \
+                        --boostrap --use
+                    * Establecer la instancia actual del builder
+                        $ docker buildx use my-builder
+                    * Listar las intefaces builder
+                        $ docker buildx ls
+                    * Iniciar una construcción y subir a Hub
+                        $ docker buildx build \
+                        --platform=linux/amd64,linux/arm64,linux/arm/v7 \
+                        -t adriayc/cron-ticker:lince --push .
+                        $ docker buildx build \
+                        --platform=linux/amd64,linux/arm64,linux/arm/v7 \
+                        -t adriayc/cron-ticker --push .                                // Si no se especifica el TAG es latest
+                    * Mostrar detalles de una imagen en el registro
+                        $ docker buildx imagetools inspect adriayc/cron-ticker:lince
