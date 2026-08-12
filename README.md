@@ -113,16 +113,16 @@ Un `.dockerignore` es un archivo de texto que le indica a Docker qué archivos y
 
 ### Commandos
 
-#### Pull
+#### Image
 
 - Descargar una imagen desde el registro oficial:
 
 ```sh
-$ docker pull IMAGEN_NAME
-$ docker pull IMAGEN_NAME:TAG       # Versión específica
-```
+$ docker image pull IMAGE_NAME:TAG     # Versión específica
+$ docker image pull IMAGE_NAME
 
-#### Image
+$ docker pull IMAGEN_NAME
+```
 
 - Listar imagenes
 
@@ -158,6 +158,14 @@ $ docker image build --no-cache --tag IMAGE_NAME:TAG PATH
 # --no-cache - no utiliza la caché al crear la imagen
 
 $ docker build --tag IMAGE_NAME:TAG PATH
+```
+
+- Subir una imagen al registro
+
+```sh
+$ docker image push REGISTRY/REPOSITORY:TAG
+
+$ docker push REGISTRY/REPOSITORY:TAG
 ```
 
 #### Container

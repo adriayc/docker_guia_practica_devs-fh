@@ -33,4 +33,9 @@ MULTI-STAGE BUILD
                         $ docker image ls
                     * Crea y ejecuta un nuevo contenedor a partir de una image
                         $ docker container run adriayc/cron-ticker:latest
-            
+                - Subir la imagen a Hub
+                    * Listar las imagenes
+                        $ docker image ls
+                    * Subir una imagen al registro
+                        $ docker push adriayc/cron-ticker:gato
+                        $ docker push adriayc/cron-ticker:latest
