@@ -1,1 +1,27 @@
 MULTI-STAGE BUILD
+
+* Docker
+    - Apps
+        + Cron-Ticker
+            * Inicializar una app Node.js
+                - Crear la app
+                    $ mkdir cron-ticker
+                    $ cd cron-ticker
+                    $ npm init
+                        > package name: (cron-ticker) ENTER
+                        ...
+                        > entry point: (index.js) app.js
+                        > author: Adriano Ayala
+                        > license: (ISC) ENTER
+                        > type: (commonjs) ENTER
+                        Is this OK? (yes) ENTER
+                    NOTA: Agregar y configurar todos los archivos necesarios!!!
+                    $ npm run start ó npm start             // Ejecutar la app
+                    $ npm run test                          // Ejecutar los test
+                - Instalar dependencias
+                    + Node-Cron
+                        $ npm install node-cron
+                    + Jest
+                        $ npm install --save-dev jest
+            * Tareas:
+            
