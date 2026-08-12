@@ -1,29 +1,30 @@
-# Crear un nuevo escenario de compilación a partir de una imagen base
-# FROM node:24.18.0-alpine3.24
-FROM --platform=$BUILDPLATFORM node:24.18.0-alpine3.24 AS build
-
-# Cambiar directorio de trabajo (`/app` - ruta de node)
+# DEPS
+FROM node:24.18.0-alpine3.24 AS deps
 WORKDIR /app
-
-# Copiar archivos y directorios
 COPY package.json ./
-
-# Ejecutar comandos de compilación (Instalar dependencias)
 RUN npm install
 
-# Copiar archivos y directorios
+
+# BUILDER Y TEST
+FROM node:24.18.0-alpine3.24 AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-
-# Ejecutar comandos de compilación (Ejecutar test con Jest)
 RUN npm run test
+# RUN npm run build
 
 
-# Eliminar archivos y directorios innecesarios para PROD
-RUN rm -rf tests && rm -rf node_modules
-
-# Instalar solo dependencias de PROD
+# DEPS FROM PROD
+FROM node:24.18.0-alpine3.24 AS deps-prod
+WORKDIR /app
+COPY package.json ./
 RUN npm install --prod
 
 
-# Especifica los comandos predeterminados (Ejecutar al app)
+# RUNNER
+FROM node:24.18.0-alpine3.24 AS runner
+WORKDIR /app
+COPY --from=deps-prod /app/node_modules ./node_modules
+COPY app.js ./
+COPY tasks/ ./tasks
 CMD [ "node", "app.js" ]
