@@ -2,7 +2,7 @@ MULTI-STAGE BUILD
 
 * Docker
     - Apps
-        + Cron-Ticker
+        + Cron-Ticker (Node.js)
             * Inicializar una app Node.js
                 - Crear la app
                     $ mkdir cron-ticker
@@ -60,3 +60,23 @@ MULTI-STAGE BUILD
                         -t adriayc/cron-ticker --push .                                // Si no se especifica el TAG es latest
                     * Mostrar detalles de una imagen en el registro
                         $ docker buildx imagetools inspect adriayc/cron-ticker:lince
+
+        + Teslo-Shop (Nestjs)
+            * Inicializar la app
+                - Copiar o clonar la app `teslo-shop`.
+                    $ yarn install              // Instalar las dependencias
+                    NOTA: Leer las instrucciones del `README.md` para levantar la app!!!
+                    $ yarn start:dev            // Ejecutar la app
+
+            * Tareas:
+                - Preparación de la app
+                    + Copiar o clonar la app `teslo-shop`.
+                    + Leer las instrucciones del `README.md` para levantar la app.
+                    + Construir o reconstruir servicios (El servicio de database)
+                        $ docker compose build
+                    + Crear y poner en marcha contenedores (Modo detach)
+                        $ docker compose up -d
+                    + Ver la salida de los contenedores (Logs)
+                        $ docker compose logs
+                    + Detener y eliminar contenedores y redes
+                        $ docker compose down
