@@ -2,7 +2,8 @@
 FROM node:19-alpine3.15 as dev-deps
 WORKDIR /app
 COPY package.json package.json
-RUN yarn install --frozen-lockfile
+# --frozen-lockfile - evita que yarn modifique o genere un nuevo archivo yarn.lock. Si el package.json y el yarn.lock no coinciden, el proceso se detiene con un error.
+RUN yarn install --frozen-lockfile 
 
 
 # BUILDER

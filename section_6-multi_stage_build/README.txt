@@ -80,3 +80,4 @@ MULTI-STAGE BUILD
                         $ docker compose logs
                     + Detener y eliminar contenedores y redes
                         $ docker compose down
+                - Agregar el servicio de la app en el `docker-compose.yml`.
