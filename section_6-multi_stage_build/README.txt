@@ -81,3 +81,17 @@ MULTI-STAGE BUILD
                     + Detener y eliminar contenedores y redes
                         $ docker compose down
                 - Agregar el servicio de la app en el `docker-compose.yml`.
+                - Ejecutar partes especificas del `Dockerfile`.
+                    + Actualizar la configuración del `docker-compose.yml`.
+                    + Detener y eliminar contenedores y redes
+                        $ docker compose down
+                        $ docker compose down --volume      // Tambíen elimina los volumenes
+                    + NOTA: Actualizar las version de los siguientes archivos (Optional: solo para esta app para resolver errores):
+                        > Modificar la version de node a `node:22-alpine3.23` en `Dockerfile`.
+                        > Modificar las dependencias `@nestjs/common`, `@nestjs/core`, y `@nestjs/platform-express` a la versión `^9.0.4`.
+                    + Construir o reconstruir servicios
+                        $ docker compose build --no-cache
+                    + Listar imagenes
+                        $ docker image ls
+                    + Crear y poner en marcha contenedores
+                        $ docker compose up

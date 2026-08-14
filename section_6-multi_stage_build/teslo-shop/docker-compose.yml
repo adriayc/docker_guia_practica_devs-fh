@@ -2,7 +2,12 @@
 
 services:
   app:
+    build:
+      context: . # Ubicación del Dockerfile
+      target: dev # Elige una stage específica de un Dockerfile (Usado en milti-stage builds)
+      dockerfile: Dockerfile # Nombre del Dockerfile
     container_name: nest-app
+    # command: yarn start:dev # Opcion 2 - para ejecutar la app desde docker-compose-yml
     ports:
       - ${PORT}:${PORT}
     environment:
@@ -17,7 +22,8 @@ services:
       HOST_API: ${HOST_API}
       JWT_SECRET: ${JWT_SECRET}
     volumes:
-      - .:app/
+      - .:/app/
+      - /app/node_modules # Volumen anónimo (Anonymous volumes)
 
   db:
     image: postgres:14.3
