@@ -3,7 +3,7 @@
 FROM node:22-alpine3.23 AS dev
 WORKDIR /app
 COPY package.json ./
-RUN yarn install
+RUN yarn install --network-timeout 100000
 # COPY . .
 # Opcion 1 - Ejecutar la app desde Dockerfile
 CMD [ "yarn", "start:dev" ]
@@ -15,7 +15,8 @@ FROM node:22-alpine3.23 AS dev-deps
 WORKDIR /app
 COPY package.json package.json
 # --frozen-lockfile - evita que yarn modifique o genere un nuevo archivo yarn.lock. Si el package.json y el yarn.lock no coinciden, el proceso se detiene con un error.
-RUN yarn install --frozen-lockfile 
+# RUN yarn install --frozen-lockfile --network-timeout 100000
+RUN yarn install --network-timeout 100000
 
 
 # BUILDER
@@ -33,7 +34,8 @@ RUN yarn build
 FROM node:22-alpine3.23 AS prod-deps
 WORKDIR /app
 COPY package.json package.json
-RUN yarn install --prod --frozen-lockfile
+# RUN yarn install --prod --frozen-lockfile --network-timeout 100000
+RUN yarn install --prod --network-timeout 100000
 
 
 # PROD

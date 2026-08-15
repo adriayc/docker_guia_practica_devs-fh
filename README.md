@@ -389,6 +389,9 @@ $ docker buildx build --platform=VALUE[,VALUE] -t REGISTRY/REPOSITORY:TAG --push
 # . - estable el archivo `Dockerfile`
 $ docker buildx build --no-cache --platform=VALUE[,VALUE] -t REGISTRY/REPOSITORY:TAG --push .
 # --no-cache - no utilice caché al crear la imagen
+
+$ docker buildx build -f PATH/Dockerfile --platform=VALUE[,VALUE] -t [registry/]repository[:tag] --push .
+# -f - nombre del Dockerfile (default: PATH/Dockerfile)
 ```
 
 - Mostrar detalles de una imagen en el registro
