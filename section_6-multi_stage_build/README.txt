@@ -104,3 +104,16 @@ MULTI-STAGE BUILD
                     + Modificar el código de la app.
                     + Detener y eliminar contenedores y redes, volumenes
                         $ docker compose down -v
+                - Generar el build de prod
+                    + Crear y configurar un nuevo `docker-compose.prod.yml` para prod.
+                    + Construir o reconstruir servicios
+                        $ docker compose -f docker-compose.prod.yml build
+                    + Listar imagenes
+                        $ docker image ls
+                    + Crear y poner en marcha contenedores
+                         $ docker compose -f docker-compose.prod.yml up
+                    + Actualizamos el TAG de la image del servicio `app`.
+                    + Construir o reconstruir servicios (Solo del servicio `app`)
+                        $ docker compose -f docker-compose.prod.yml build app
+                    + Listar imagenes
+                        $ docker image ls

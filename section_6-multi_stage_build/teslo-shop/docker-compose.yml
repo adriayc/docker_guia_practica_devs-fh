@@ -5,6 +5,7 @@ services:
     build:
       context: . # Ubicación del Dockerfile
       target: dev # Elige una stage específica de un Dockerfile (Usado en milti-stage builds)
+      # target: ${STAGE} # Elige una stage específica de un Dockerfile (Usado en milti-stage builds)
       dockerfile: Dockerfile # Nombre del Dockerfile
     container_name: nest-app
     # command: yarn start:dev # Opcion 2 - para ejecutar la app desde docker-compose-yml

@@ -407,10 +407,25 @@ Nomenclatura de los contanedores usados en el Docker Compose: `<project-name>_<s
 
 ### Commandos
 
+- Construir y reconstruir servicios
+
+```sh
+$ docker compose build
+$ docker compose build --no-cache
+# --no-cache - no utiliza la caché al crear la imagen
+
+$ docker compose -f COMPOSE_FILE.yml, [COMPOSE_FILE.yaml] build
+# -f - archivos de configuración de compose
+```
+
 - Crear y poner en marcha contenedores
 
 ```sh
 $ docker compose up
+
+$ docker compose -f COMPOSE_FILE.yml, [COMPOSE_FILE.yaml] up
+# -f - archivos de configuración de compose
+$ docker compose -f COMPOSE_FILE.yml, [COMPOSE_FILE.yaml] up [SERVICE...]
 ```
 
 - Detener y eliminar contenedores y redes
