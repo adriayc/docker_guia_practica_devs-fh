@@ -95,3 +95,12 @@ MULTI-STAGE BUILD
                         $ docker image ls
                     + Crear y poner en marcha contenedores
                         $ docker compose up
+                - Probar el BindVolume desde el compose
+                    + Detener y eliminar contenedores y redes
+                        $ docker compose down
+                    + Crear y poner en marcha contenedores
+                        $ docker compose up
+                    + Ejecuar el SEED usando la url http://localhost:3000/api/seed o obre la url http://localhost:3000/api OpenAPI Doc.
+                    + Modificar el código de la app.
+                    + Detener y eliminar contenedores y redes, volumenes
+                        $ docker compose down -v
