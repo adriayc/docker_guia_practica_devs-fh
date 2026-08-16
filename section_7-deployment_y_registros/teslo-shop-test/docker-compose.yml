@@ -1,0 +1,36 @@
+services:
+  app:
+    image: adriayc/teslo-shop:1.0.0 # Imagen desde el Hub
+    container_name: teslo-app
+    depends_on:
+      - db
+    restart: always
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      APP_VERSION: ${APP_VERSION}
+      STAGE: ${STAGE}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      PORT: ${PORT}
+      HOST_API: ${HOST_API}
+      JWT_SECRET: ${JWT_SECRET}
+
+  db:
+    image: postgres:14.3
+    container_name: ${DB_NAME}
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
+    external: false

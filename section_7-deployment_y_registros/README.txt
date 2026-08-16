@@ -35,4 +35,15 @@ DEPLOYMENTS Y REGISTROS
                         | :---                     | :---                      | :---              |
                         | APP_VERSION              | 1.0.1                     | Versión de la app |
                         | ...                      | ...                       | ...               |
-                    
+                - Prueba de la image del Hub
+                    + Eliminar todas las imagenes
+                        $ docker compose prune -a
+                    + Listar imagenes
+                        $ docker image ls
+                    + Navegar a la PATH de `teslo-shop-test`
+                    + Construir o reconstruir servicios
+                        $ docker compose build
+                    + Crear y poner en marcha contenedores
+                        $ docker compose up
+                    + Detener y eliminar contenedores y redes, y volumnes
+                        $ docker compose down -v
