@@ -28,3 +28,11 @@ DEPLOYMENTS Y REGISTROS
                         --platform=linux/amd64,linux/arm64,linux/arm/v7 \
                         -t adriayc/teslo-shop:latest \
                         --push .
+                - Actualizar la descripción general del repositorio       
+                    + Actualizar la respostory overview (My respository > General > Repository overview | Click 'Edit')
+                        ## Variables de entornos de la applicación
+                        | Variables de entorno     | Ejemplo                   | Descripción       |
+                        | :---                     | :---                      | :---              |
+                        | APP_VERSION              | 1.0.1                     | Versión de la app |
+                        | ...                      | ...                       | ...               |
+                    
