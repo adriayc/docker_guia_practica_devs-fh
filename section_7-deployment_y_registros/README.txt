@@ -117,4 +117,23 @@ DEPLOYMENTS Y REGISTROS
                     + Crear y poner en marcha contenedores
                         $ docker compose up
                     + NOTA: crear una nueva imagen con los SSL del proyecto `teslo-shop` y subir al Hub.
-                
+                - Conectar contenedores a la database
+                    + Ir al PATH de la app `teslo-shop`
+                    + Descomentamos la configuración del SSL en el archivo `app.module.ts`
+                    + Iniciar una construcción y subir a Hub
+                        $ docker buildx build \
+                        --platform=linux/amd64,linux/arm64,linux/arm/v7 \
+                        -t adriayc/teslo-shop:1.1.0 \
+                        --push .
+                        $ docker buildx build \
+                        --platform=linux/amd64,linux/arm64,linux/arm/v7 \
+                        -t adriayc/teslo-shop \
+                        --push .
+                    + Ir al PATH de la app `teslo-shop-test`
+                    + Detener y eliminar contenedores y redes
+                        $ docker compose down
+                    + Crear y poner en marcha contenedores
+                        $ docker compose up
+                    + Verificar el funcionamiento de la app (URL: http://localhost:3000/api) y ejecutar el SEED
+                    + Detener y eliminar contenedores y redes
+                        $ docker compose down

@@ -1,6 +1,7 @@
 services:
   app:
-    image: adriayc/teslo-shop:1.0.0 # Imagen desde el Hub
+    # image: adriayc/teslo-shop:1.0.0 # Imagen desde el Hub
+    image: adriayc/teslo-shop:1.1.0 # Imagen desde el Hub
     container_name: teslo-app
     # Comentar para la database de Digital Ocean
     # depends_on:
