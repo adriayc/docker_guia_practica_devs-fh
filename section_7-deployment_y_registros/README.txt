@@ -137,3 +137,48 @@ DEPLOYMENTS Y REGISTROS
                     + Verificar el funcionamiento de la app (URL: http://localhost:3000/api) y ejecutar el SEED
                     + Detener y eliminar contenedores y redes
                         $ docker compose down
+                - Desplegar una imagen desde Docker Hub
+                    + Crear un nueva app (Apps > Click 'Create App')
+                        1 Resources
+                            > Crear Resources From Source Code
+                                > Service Provide: Docker Hub       // NOTA: debe rese un registro publico!!!
+                                > Repository: adriayc/teslo-shop
+                                > Tag (optional): 1.1.0
+                                Click 'Next'
+                            > App
+                                > Editar la app
+                                    > adriayc-teslo-shop Settings
+                                        > Name (Click 'Edit')
+                                            > Resource Name: tesloshop-api
+                                            Click 'Save'
+                                    Click 'Back'
+                                Click 'Next'
+                        2 Enviroment Variables
+                            > Enviroment
+                                > Global (Click 'Edit')
+                                    Keys                Values
+                                    APP_VERSION         1.1.0
+                                    STAGE               prod
+                                    ...                 ...
+                                    Click 'Save'
+                                Click 'Next'
+                            > Info
+                                > App Info (Click 'Edit')
+                                    > Name: tesloshop-api
+                                > Project: TesloShopApp
+                                Click 'Save'
+                            Click 'Next'
+                        3 Info
+                            ...
+                            > Billing (Click 'Edit Plan')
+
+                                > Edit Plan
+                                    > Plan: Basic
+                                    > Web Service 
+                                        Resource        Size
+                                        tesloshop-api   {{SELECT_CHEAPEST_PLAN}}
+                                Click 'Back'
+                            Click 'Create Resources'
+                    + Ver los logs mientras realiza el deploy (MY_APP > Click 'Go to Deploy Logs')
+                    + Verificar la app (MY_APP > Click 'Live App')
+                        > URL: https://teslo....ondigitalocean.app/api
