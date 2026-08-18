@@ -217,3 +217,28 @@ DEPLOYMENTS Y REGISTROS
                         --platform=linux/amd64,linux/arm64,linux/arm/v7 \
                         -t registry.digitalocean.com/ax2cdev-registry/teslo-shop:1.2.0 \
                         --push .
+                - Desplegar imagen del registro privado de Digital Ocean
+                    + Crear una nueva app (Apps > Click 'Create App')
+                        1 Resources
+                            > Create Resource From Source Code
+                                > Service Provider: DigitalOcean Container Registry
+                                > Repository: ax2cdev-registry/teslo-shop
+                                > Tag: 1.2.0                                // NOTA: no usar el tag `latest`!!!
+                                > [TRUE] Autodeploy
+                                Click 'Next'
+                            > App
+                                > Edit the app name (optional) y Edit Plan (select a plan)
+                                Click 'Next'
+                        2 Enviroment Variables
+                            > Enviroment
+                                > Global (Add all enviroment variables)
+                            Click 'Next'
+                        3 Info
+                            > Info
+                                > App Info (Click 'Edit' | Update name & Select Project)
+                            Click 'Next'
+                        4 Review
+                            Click 'Create Resources'
+                    + Ver los logs mientras realiza el deploy (MY_APP > Click 'Go to Deploy Logs')
+                    + Verificar la app (MY_APP > Click 'Live App')
+                        > URL: https://teslo....ondigitalocean.app/api
