@@ -182,3 +182,31 @@ DEPLOYMENTS Y REGISTROS
                     + Ver los logs mientras realiza el deploy (MY_APP > Click 'Go to Deploy Logs')
                     + Verificar la app (MY_APP > Click 'Live App')
                         > URL: https://teslo....ondigitalocean.app/api
+                - Crear registro y desplegarlo en Digital Ocean
+                    + Crear un nuevo registro (Container Registry > Click 'Create a Container Registry')
+                        > Create your private container registry
+                            > All we nned is a name
+                                > Enter a unique name: ax2cdev-registry
+                            > Choose a datacenter region: {{SELECT_DATACENTER_REGION}}
+                            > Choose a plan: Starter
+                            Click 'Create Resgistry'
+                        1 Create a container registry
+                            Click 'Get Started'
+                        2 Connection to the registry
+                            > Authenticate with this registry
+                                > API Token (dependency free)
+                                    First, ```create a new API token```...
+                                        > Application & API (Token/Keys > Click 'Generate New Token')
+                                            > New personal access token
+                                                > Token name: ax2cdev-token
+                                                > Expiration: 30 days
+                                            Click 'Generate Token'
+                                        > COPY ax2cdev-token token!!!
+                                    $ docker login registry.digitalocean.com    [COPY]
+                                        > Username: {{API_TOKEN}}
+                                        > Password: {{API_TOKEN}}
+                            Click 'Continue'
+                        3 Integrating with Kubernates
+                            Click 'Save & Continue'
+                        4 Next steps
+                            Click 'Great, I'm done'
