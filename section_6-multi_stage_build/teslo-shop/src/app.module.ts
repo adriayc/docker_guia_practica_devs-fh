@@ -17,6 +17,7 @@ import { MessagesWsModule } from './messages-ws/messages-ws.module';
     ConfigModule.forRoot(),
 
     TypeOrmModule.forRoot({
+      // Descomentar para la database de Digital Ocean
       // ssl: process.env.STAGE === 'prod',
       // extra: {
       //   ssl: process.env.STAGE === 'prod'

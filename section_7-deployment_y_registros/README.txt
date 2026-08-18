@@ -107,3 +107,14 @@ DEPLOYMENTS Y REGISTROS
                                 > Passoword: {{PG_PASSWORD_DO}}
                                 > Database: {{PG_DATABASE_DO}}
                                 Click 'Test' | 'Save' | 'Connect'
+                - Conectar contenedore con la database (Digital Ocean)
+                    + Listar los contenedores
+                        $ docker container ls -a
+                    + Eliminar contenedores
+                        $ docker container rm -f 0845ff389362 0945df389538
+                    + Ir al PATH de al app `teslo-shop-test`.
+                    + Actualizar las credencial de las variables de entorno `.env` con las de Digital Ocean.
+                    + Crear y poner en marcha contenedores
+                        $ docker compose up
+                    + NOTA: crear una nueva imagen con los SSL del proyecto `teslo-shop` y subir al Hub.
+                

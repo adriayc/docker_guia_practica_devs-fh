@@ -2,8 +2,9 @@ services:
   app:
     image: adriayc/teslo-shop:1.0.0 # Imagen desde el Hub
     container_name: teslo-app
-    depends_on:
-      - db
+    # Comentar para la database de Digital Ocean
+    # depends_on:
+    #   - db
     restart: always
     ports:
       - ${PORT}:${PORT}
@@ -19,18 +20,20 @@ services:
       HOST_API: ${HOST_API}
       JWT_SECRET: ${JWT_SECRET}
 
-  db:
-    image: postgres:14.3
-    container_name: ${DB_NAME}
-    restart: always
-    ports:
-      - "5432:5432"
-    environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
-    volumes:
-      - postgres-db:/var/lib/postgresql/data
+  # Comentar para la database de Digital Ocean
+  # db:
+  #   image: postgres:14.3
+  #   container_name: ${DB_NAME}
+  #   restart: always
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     POSTGRES_PASSWORD: ${DB_PASSWORD}
+  #     POSTGRES_DB: ${DB_NAME}
+  #   volumes:
+  #     - postgres-db:/var/lib/postgresql/data
 
-volumes:
-  postgres-db:
-    external: false
+# Comentar para la database de Digital Ocean
+# volumes:
+#   postgres-db:
+#     external: false
