@@ -84,3 +84,26 @@ DEPLOYMENTS Y REGISTROS
                                 + Next steps
                                     > A few things to help set up this database cluster
                                     Click 'Great, I'm done'
+                - Probar la database
+                    + Configurar los users y databases (DATA SERVICES | Managed Databases > Seleccionar 'tesloshopdb' > Users & Databases)
+                        > Users
+                            > Username: tesloshop-user
+                            Click 'Save'
+                        > Databases
+                            > Database Name: tesloshopdb
+                            Click 'Save'
+                    + Ver las credenciales (DATA SERVICES | Managed Databases > Seleccionar 'tesloshopdb' > Overview)
+                        > CONNECTION DETAILS
+                            > Connection String | Connection parameters
+                                > User: tesloshop-user
+                                > Database/Pool: tesloshopdb
+                    + TablePlus
+                        * Crear una nueva conexión (Click '+' | Create new connectin > PostgreSQL)
+                            > PostgreSQL Connection
+                                > Name: TesloShopDB-DO
+                                > Host/Socket: {{PG_HOST_DO}}
+                                > Port: {{PG_PORT_DO}}
+                                > User: {{PG_USERNAME_DO}}
+                                > Passoword: {{PG_PASSWORD_DO}}
+                                > Database: {{PG_DATABASE_DO}}
+                                Click 'Test' | 'Save' | 'Connect'
