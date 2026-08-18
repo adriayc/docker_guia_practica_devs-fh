@@ -210,3 +210,10 @@ DEPLOYMENTS Y REGISTROS
                             Click 'Save & Continue'
                         4 Next steps
                             Click 'Great, I'm done'
+                - Subir imagen al registro de Digital Ocean
+                    + Ir al PATH de la app `teslo-shop`
+                    + Iniciar una construcción y subir a DO
+                        $ docker buildx build \
+                        --platform=linux/amd64,linux/arm64,linux/arm/v7 \
+                        -t registry.digitalocean.com/ax2cdev-registry/teslo-shop:1.2.0 \
+                        --push .
