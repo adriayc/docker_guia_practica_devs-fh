@@ -23,10 +23,32 @@ CONSTRUCIONES AUTOMÁTICAS - GITHUB ACTIONS
                         $ git init
                         $ git add .
                         $ git commit -m "Fisrt commit"
-                        
+
                         $ git remote add origing https://github.com/.../{{REPOSITORY_NAME}}.git
                         $ git branch -M main
                         $ git push -u oring main
+                - Configurar las credenciales (GitHub Secrets)
+                    + Docker Hub
+                        * Generate new access token on «Docker Hub» (Docker Hub > Account settings > Personal access tokens > 'Generate new token')
+                            > Access token description: GitHub Actions
+                            > Access permissions: Repo Read & Write
+                            Click 'Generate'
+                        * COPY the personal access token!!!
+                    + GitHub
+                        * Repository secrets ({{REPOSITORY_NAME}} > Settings > Secrets and variables > Actions > 'New repositorio secret')
+                            - Username
+                                > Name: DOCKER_HUB_USERNAME
+                                > Secret: {{USERNAME}}
+                                Click 'Add secret'
+                            - Password
+                                > Name: DOCKER_HUB_PASSWORD
+                                > Secret: {{PASSWORD}}
+                                Click 'Add secret'
+                    + Docker Hub
+                        * Crear un nuevo repositorio (Docker Hub > Respositories > 'Create repository')
+                            > Respository Name: docker-respository-actions
+                            > Private | Public
+                            Click 'Create'
 
 
 * Terminal (Shortcuts)
