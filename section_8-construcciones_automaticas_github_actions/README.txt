@@ -49,7 +49,20 @@ CONSTRUCIONES AUTOMÁTICAS - GITHUB ACTIONS
                             > Respository Name: docker-respository-actions
                             > Private | Public
                             Click 'Create'
-
+                - Primeros pasos de GitHub Actions
+                    + Configurar el Docker Image ({{REPOSITORY_NAME}} > Actions > Click 'Configure')
+                      Click 'Commit changes...'
+                        > Commit message: Add Docker Image CI workflow
+                        > [TRUE] Commit directly to the main branch
+                        Click 'Commit changes'
+                - Construcción de la image (Docker)
+                    + Construir la imagen
+                        $ docker build -t adriayc/docker-graphql-actionsk:0.0.1 .
+                    + Ejecutar la image
+                        $ docker container run -p 3000:3000 adriayc/docker-graphql-actionsk:0.0.1
+                    + Abrir en el browser URL: http://localhost:3000/graphql
+                    + Eliminar el contenedor
+                        $ docker container rm -f {{CONTAINER_ID}}
 
 * Terminal (Shortcuts)
     - CTRL + L: Limpia todo de la terminal
