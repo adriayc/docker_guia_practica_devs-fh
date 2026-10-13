@@ -63,6 +63,32 @@ CONSTRUCIONES AUTOMÁTICAS - GITHUB ACTIONS
                     + Abrir en el browser URL: http://localhost:3000/graphql
                     + Eliminar el contenedor
                         $ docker container rm -f {{CONTAINER_ID}}
+                - GitHub Actions - Setups
+                    + Editar workflow ({{REPOSITORY_NAME}} > Actions > {{My Workflow}} > Click '...' | 'View workflow file' > Click 'Edit')
+                        ```docker
+                            steps:
+                            - name: Checkout code
+                            uses: actions/checkout@v4
+                            with:
+                                fetch-depth: 0
+
+                            - name: Docker login
+                            env:
+                                DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+                                DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+                            run: 
+                                echo "Iniciando login"
+                                docker login -y $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+                                echo "Finalizando login"
+                            
+                            # - name: Build the Docker image
+                            #   run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+                        ```
+                        Click 'Commit changes...'
+                            > Commit message: Add Docker login step to workflow
+                            Click 'Commit changes'
+                    + Mostrar logs del workflow ({{REPOSITORY_NAME}} > Actions > {{SELECT_WORKFLOW}})
+
 
 * Terminal (Shortcuts)
     - CTRL + L: Limpia todo de la terminal
