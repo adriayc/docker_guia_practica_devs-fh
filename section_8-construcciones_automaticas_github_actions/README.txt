@@ -124,6 +124,27 @@ CONSTRUCIONES AUTOMÁTICAS - GITHUB ACTIONS
                             -p 3000:3000 \
                             adriayc/docker-graphql-actions:0.0.2
                     + Abrir en el browser URL: http://localhost:3000/graphql
+                - Renombrar Latest
+                    + Editar workflow ({{REPOSITORY_NAME}} > Actions > {{My Workflow}} > Click '...' | 'View workflow file' > Click 'Edit')
+                        ```docker
+                        steps:
+                        ...
+                        - name: Build Docker Image
+                        run: 
+                            docker build -t adriayc/docker-graphql-actions:0.0.2 .
+                            docker build -t adriayc/docker-graphql-actions:latest .
+
+                        - name: Push Docker Image
+                        run: 
+                            docker push adriayc/docker-graphql-actions:0.0.2
+                            docker push adriayc/docker-graphql-actions:latest
+                        ...
+                        ```
+                        Click 'Commit changes...'
+                            > Commit message: Add latest tag to Docker image build and push
+                            Click 'Commit changes'
+                    + Mostrar logs del workflow ({{REPOSITORY_NAME}} > Actions > {{SELECT_WORKFLOW}})
+                    + Mostar los Tags del repository ({{REPOSITORY_NAME}} > General | Tags) [Docker Hub]
 
 
 * Terminal (Shortcuts)
