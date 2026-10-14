@@ -145,6 +145,60 @@ CONSTRUCIONES AUTOMÁTICAS - GITHUB ACTIONS
                             Click 'Commit changes'
                     + Mostrar logs del workflow ({{REPOSITORY_NAME}} > Actions > {{SELECT_WORKFLOW}})
                     + Mostar los Tags del repository ({{REPOSITORY_NAME}} > General | Tags) [Docker Hub]
+                - Versionamiento semantico automático
+                    + Doc (URL: https://github.com/marketplace/actions/git-semantic-version)
+                        Click 'Use latest version'
+                            COPY:
+                            ```yml 
+                            - name: Git Semantic Version
+                              uses: PaulHatch/semantic-version@v6.0.2
+                            ```
+                    + Editar workflow ({{REPOSITORY_NAME}} > Actions > {{My Workflow}} > Click '...' | 'View workflow file' > Click 'Edit')
+                        ```docker
+                            steps:
+                            - name: Checkout code
+                            ...
+
+                            - name: Git Semantic Version
+                            uses: PaulHatch/semantic-version@v6.0.2
+                            with:
+                                major_pattern: "major:"
+                                minor_pattern: "feat:"
+                                version_format: "${major}.${minor}.${patch}-prerelease${increment}"
+                            id: version
+
+                            - name: Docker login
+                            env:
+                                DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+                                DOCKER_HUB_PASSWORD: ${{ secrets.DOCKER_HUB_PASSWORD }}
+                                VERSION: ${{ steps.version.outputs.version }}
+                            run: 
+                                docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
+                                echo "Docker version = $VERSION!!!"
+
+                            # - name: Build Docker Image
+                            #   run: 
+                            #     docker build -t adriayc/docker-graphql-actions:0.0.2 .
+                            #     docker build -t adriayc/docker-graphql-actions:latest .
+
+                            # - name: Push Docker Image
+                            #   run: 
+                            #     docker push adriayc/docker-graphql-actions:0.0.2
+                            #     docker push adriayc/docker-graphql-actions:latest
+                            ...
+                        ```
+                        Click 'Commit changes...'
+                                > Commit message: Add semantic versioning to Docker workflow
+                                Click 'Commit changes'
+                    + Modificar el código desde GitHub
+                        * Cambio menor
+                            Click 'Commit changes...'
+                                > Commit message: `feat: Cambio menor en el código`
+                                Click 'Commit changes'
+                        * Cambio mayor
+                            Click 'Commit changes...'
+                                > Commit message: `major: Cambio mayor en el código`
+                                Click 'Commit changes'
 
 
 * Terminal (Shortcuts)
