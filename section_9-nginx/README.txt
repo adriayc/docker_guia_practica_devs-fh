@@ -18,3 +18,24 @@ NGINX
                     + Descargar y ejecutar la imagen.
                         $ docker run --name some-nginx -d -p 8080:80 nginx:1.31.7
                     + Abrir en browser la url: `http:localhost:8080`
+                - Inspeccionar nginx
+                    + Listar los contenedores
+                        $ docker container ls
+                    + Ejecuta un comando dentro de un contenedor en funcionamiento (Abre un terminal interactiva)
+                        $ docker container exec -it 5df91096568c bash
+                            Ruta del contenido estatico
+                            > # cd usr/share/nginx/html/
+                            > # ls 
+                                ...  index.html
+                            > cat index.html
+
+                            Archivo de configuración del server
+                            > # cd /etc/nginx/conf.d
+                            > # ls
+                                default.conf
+                            > cat default.conf
+                    + Listar los contenedores
+                        $ docker container ls
+                    + Eliminar el contenedor
+                        $ docker container rm -f 5df91096568c
+                        
