@@ -49,4 +49,12 @@ NGINX
                     * Abrir el browser URL: http://localhost/
                     * Eliminar el contenedor
                         $ docker container rm -f 39b046d29e22
-                        
+                - Nginx configuración
+                    * Copiar el archivo de config de nginx `/etc/nginx/conf.d/default.conf` en el directorio `nginx` del proyecto.
+                    * Realizar las modificaciones del archivo de configuración.
+                    * Construir la imagen
+                        $ docker image build -t heroes-app . --no-cache
+                    * Ejecutar el contenedor
+                        $ docker container run -p 80:80 heroes-app
+                    * Abrir el browser URL: http://localhost/
+                    
