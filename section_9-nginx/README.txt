@@ -38,4 +38,15 @@ NGINX
                         $ docker container ls
                     + Eliminar el contenedor
                         $ docker container rm -f 5df91096568c
+                - Construir la imagen de nuestra aplicación
+                    * Crear el archivo Dockerfile y .dockerignore
+                    * Construir la image
+                        $ docker image build -t heroes-app . --no-cache
+                    * Listar imagenes
+                        $ docker image ls
+                    * Ejecutar el contenedor
+                        $ docker container run -p 80:80 heroes-app
+                    * Abrir el browser URL: http://localhost/
+                    * Eliminar el contenedor
+                        $ docker container rm -f 39b046d29e22
                         
