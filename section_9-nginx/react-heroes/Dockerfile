@@ -18,6 +18,8 @@ RUN yarn build
 FROM nginx:1.31.7 AS prod
 EXPOSE 80
 COPY --from=builder /app/dist /usr/share/nginx/html
+COPY assets/ /usr/share/nginx/html/assets
+
 # Eliminar el archivo de conf del servidor
 RUN rm /etc/nginx/conf.d/default.conf
 # Copiar el archivo configuracion al servidor

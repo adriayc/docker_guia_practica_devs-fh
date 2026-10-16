@@ -57,4 +57,10 @@ NGINX
                     * Ejecutar el contenedor
                         $ docker container run -p 80:80 heroes-app
                     * Abrir el browser URL: http://localhost/
-                    
+                - Copiar los recursos estáticos
+                    * Modificar el `Dockerfile`
+                    * Construir la imagen
+                        $ docker image build -t heroes-app .
+                    * Ejecutar el contenedor
+                        $ docker container run -p 80:80 heroes-app
+                    * Abrir el browser URL: http://localhost/
