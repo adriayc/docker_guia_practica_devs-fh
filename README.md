@@ -513,3 +513,21 @@ Un clúster está compuesto por dos partes principales:
 
 - **Control Plane**: adminstra y coordina el clúster.
 - **Worker Nodes**: ejecutar las aplicaciones dentro de Pods.
+
+### MiniKube
+
+Minikube es una herramienta que permite ejecutar un clúster de Kubernetes localmente en tu computadora, ideal para aprender Kubernetes y desarrollar o probar aplicaciones sin necesitar un clúster en la nube.
+
+### Comandos
+
+- Mostrar la versión
+
+```sh
+$ minikube version
+```
+
+- Iniciar un clúster
+
+```sh
+$ minikube start
+```
