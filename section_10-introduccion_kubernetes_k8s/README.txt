@@ -14,3 +14,10 @@ INTRODUCCIÓN A KUBERNETES (K8S)
         + ConfiMap
             * Crear y configurar el archivo `postgres-config.yml`.
             * Buscar en la documentación `ConfigMap` (URL: https://kubernetes.io/docs/home/).
+        + Secrets
+            * Crear y configurar el archivo `postgres-secrets.yml`.
+            * Buscar en la documentación `Secrets` (URL: https://kubernetes.io/docs/home/).
+            * Base74 Encode (URL: https://codebeautify.org/base64-encode) o terminal (Linux)
+                ```sh
+                $ echo -n postgres | base64
+                ```
