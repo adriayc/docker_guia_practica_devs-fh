@@ -444,3 +444,72 @@ $ docker compose down -d   # -d - Modo independiente: Ejecutar los contenedores 
 $ docker compose logs
 $ docker compose logs -f      # -f - Siga la salida del registro
 ```
+
+## Kubernetes
+
+Kubernetes (K8s) es una pltaforma de código abierto que permite autmatizar el despliegue, la administración y el escalado de aplicaciones que se ejecutan en contenedores, como los contenedores creados en Doocker.
+
+En pocas palabras, Kubernetes administra tus contenedores para que tu aplicación funcione de manera fiable, incluso cuando necesitas ejecutar muchas instancias al mismo tiempo.
+
+### ¿Qué problema resuelve Kubernetes?
+
+Kubernetes resuleve el problema de administrar aplicaciones en contenedores cuando ejecutarlas manualmente se vuelve complejo.
+
+Los principales problemas:
+
+1. Fallos de los contenedores.
+2. Aumento del tráfico.
+3. Comunicación entre servicios.
+4. Actualización de la apliación.
+5. Administración de recursos y servidores.
+
+### Orquestación
+
+La orquestación en Kubernetes es la automatización de la administración, coordinación y supervisión de contenedores que ejecutan una apliación.
+
+En lugar de tener que inciar, detener, reparar y distribuir los contenedores manualmente, Kubernetes se encarga de coordinar estas tareas según la configuración que tú definas.
+
+### Recursos principales de Kubernetes (K8s)
+
+Los recursos de Kubernetes son objetos que permiten declarar, configurar y administrar el estado de las aplicaciones y de la infraestructura dentro de un clúster.
+
+Recursos principlaes:
+
+1. **Pod**
+   Es la unidad mínima desplegable de Kubernetes. Contiene uno o más contenedores que comparten recursos de red y pueden compartir almacenamiento.
+
+2. **Service**
+   Proporciona una dirección y un punto de acceso estables para comunicarse con un conjunto de Pods.
+
+3. **Ingress**
+
+Define reglas de acceso HTTP/HTTPS mediante un controlador compatible.
+
+4. **ConfigMap**
+
+Almacena configuración no confidencial, como nombres de servicios y opciones de la apliación.
+
+5. **Secret**
+
+Permite gestionar información sensible, como contraseñas, tokens y credenciales. Requiere controles de acceso y configuración de seguridad adecuados.
+
+6. **PersistentVolume (PV) y PersistentVolumeClaim (PVC)**
+
+El PV representa almacenamiento persistente y el PVC solicita almacenamiento para una aplicación.
+
+7. **Deployment**
+
+Adminstra aplicaciones sin estado mediante ReplicaSets, permite mantener réplicas y facilita las actualizaciones.
+
+8. **StatefulSet**
+
+Adminstra aplicaciones que necesitan identidades estables y, habitualmente, almacenamiento persistente.
+
+### Kubernetes (K8s) Cluster
+
+Un Kubernetes CLuster (clúster de Kubernetes) es un conjunto de máquinas físicas o virtuales que trabajan juntas para ejectuar y adminstrar aplicaciones en contenedores.
+
+Un clúster está compuesto por dos partes principales:
+
+- **Control Plane**: adminstra y coordina el clúster.
+- **Worker Nodes**: ejecutar las aplicaciones dentro de Pods.
