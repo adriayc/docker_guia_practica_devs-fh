@@ -11,3 +11,6 @@ INTRODUCCIÓN A KUBERNETES (K8S)
                 $ minikube version
             * Iniciar su clúster
                 $ minikube start
+        + ConfiMap
+            * Crear y configurar el archivo `postgres-config.yml`.
+            * Buscar en la documentación `ConfigMap` (URL: https://kubernetes.io/docs/home/).
