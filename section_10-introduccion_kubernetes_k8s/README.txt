@@ -144,3 +144,31 @@ INTRODUCCIÓN A KUBERNETES (K8S)
                 # Pod
                 $ kubectl logs -f pod/backend-deployment-776c597848-586gm   # Logs con seguiento
                 ```
+        + Probar backend y limpieza.
+            * Backend App
+                - Acceder o exponer el servicio y minikube abre el navegador.
+                    ```sh
+                    $ minikube service backend-service
+                    ```
+                - Abri manualmente en el browser (URL: http://127.0.0.1:45779/api)
+            * PgAdmin4
+                - Acceder o exponer el servicio y minikube abre el navegador.
+                    ```sh
+                    $ minikube service pgadmin-service 
+                    ```
+                - Abri manualmente en el browser (URL: http://127.0.0.1:44683)
+                    + Agrear un nuevo servidor (Register > Server.. > Add a new server)
+                        > General
+                            > Name: PostgreSQL
+                        > Connection
+                            > Host name/address: postgres-service # {{POSTGRES_SERVICE_NAME}}
+                            > Port: 5432
+                            > Maintenance database: postgres
+                            > Username: postgres # {{DB_USER_ON_SECRETS}}
+                            > Password: ThisIsMyPassword # {{DB_PASSWORD_ON_SECRETS}}
+                            > Save password? [TRUE]
+                            Click 'Save'
+            * Eliminar todos los clúster de minikube
+                ```sh
+                $ minikube delete --all
+                ```
