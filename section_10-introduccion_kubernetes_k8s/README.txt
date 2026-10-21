@@ -25,3 +25,31 @@ INTRODUCCIÓN A KUBERNETES (K8S)
             * Crear y configurar el archivo `postgres.yml`.
             * Buscar en la documentación `Deployments` (URL: https://kubernetes.io/docs/home/).
             * Buscar en la documentación `Services` (URL: https://kubernetes.io/docs/home/).
+        + Desplegar la base de datos en el clúster.
+            * Verificar la version de Kubernetes.
+                ```sh
+                $ minikube kubectl version
+                ```
+            * Listar los recursos de k8s (Pods, Deployments, ReplicaSets y Services)
+                ```sh
+                $ minikube kubectl get all
+                ```
+            * Aplicar la configuracion del config, secret, y service y deployment.
+                ```sh
+                $ minikube kubectl -- apply -f postgres-config.yml
+                $ minikube kubectl -- apply -f postgres-secrets.yml
+                $ minikube kubectl -- apply -f postgres.yml
+                ```
+            * Listar los recursos de k8s (Pods, Deployments, ReplicaSets y Services)
+                ```sh
+                $ minikube kubectl get all
+                ```
+            * Mostrar detalles de un recurso especifico o grupo de recursos
+                ```sh
+                $ minikube kubectl -- describe deployment.apps/postgres-deployment
+                $ minikube kubectl describe pod postgres-deployment-644cc6778b-zfpwl
+                ```
+            * Imprime los registros o logs de un contenedor en un pod
+                ```sh
+                $ minikube kubectl -- logs pod/postgres-deployment-644cc6778b-zfpwl
+                ```

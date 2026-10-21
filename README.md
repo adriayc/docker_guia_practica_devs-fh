@@ -520,14 +520,87 @@ Minikube es una herramienta que permite ejecutar un clúster de Kubernetes local
 
 ### Comandos
 
+#### MiniKube
+
+##### Version
+
 - Mostrar la versión
 
 ```sh
 $ minikube version
 ```
 
+##### Cluster
+
 - Iniciar un clúster
 
 ```sh
 $ minikube start
+```
+
+- Deterner el clúster
+
+```sh
+$ minikube stop
+```
+
+- Eliminar todos los clúster
+
+```sh
+$ minikube delte --all
+```
+
+#### Kubernetes
+
+##### Version
+
+- Mostrar la versión
+
+```sh
+$ kubectl version
+$ kubectl version --client
+```
+
+##### Apply
+
+- Appicar la configuración a un recurso por nombre de archivo.
+
+```sh
+$ kubectl apply -f {{FILENAME}}
+```
+
+##### Get
+
+- Mostrar de forma rápida los recursos princiapales (Pods, Deployments, Services y ReplicaSets) en el namespace actual
+
+```sh
+$ kubectl get all
+```
+
+- Listar todos los pods
+
+```sh
+$ kubectl get pods
+```
+
+##### Describe
+
+- Muestrar detalles de un pod
+
+```sh
+$ kubectl describe {{POD_NAME}}
+```
+
+- Mosrar detalles de todos los pods
+
+```sh
+$ kubectl describe pods
+```
+
+##### Logs
+
+- Imprimir los registros de un pod
+
+```sh
+$ kubectl logs {{POD_NAME}}
 ```
