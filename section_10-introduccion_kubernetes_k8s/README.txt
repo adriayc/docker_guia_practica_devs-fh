@@ -94,4 +94,6 @@ INTRODUCCIÓN A KUBERNETES (K8S)
                         > Password: ThisIsMyPassword # {{DB_PASSWORD_ON_SECRETS}}
                         > Save password? [TRUE]
                         Click 'Save'
-                        
+        + Agregar el backend al clúster
+            * Crear y configurar el archivo `backend-secrets.yml`.
+            * Crear y configurar el archivo `backend.yml`.
