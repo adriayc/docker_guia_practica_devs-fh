@@ -612,3 +612,11 @@ $ kubectl describe pods
 ```sh
 $ kubectl logs {{POD_NAME}}
 ```
+
+##### Rollout
+
+- Reinstalar una implementación
+
+```sh
+$ kubectl rollout restart {{DEPLOYMENT_NAME}}
+```

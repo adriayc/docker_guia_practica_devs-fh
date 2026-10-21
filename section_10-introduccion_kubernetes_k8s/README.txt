@@ -97,3 +97,50 @@ INTRODUCCIÓN A KUBERNETES (K8S)
         + Agregar el backend al clúster
             * Crear y configurar el archivo `backend-secrets.yml`.
             * Crear y configurar el archivo `backend.yml`.
+        + Desplegar el backend app al clúster
+            * Aplicar la configuracion del secrets y deployment.
+                ```sh
+                $ kubectl apply -f backend-secrets.yml
+                $ kubectl apply -f backend.yml
+                ```
+            * Listar los recursos de k8s (Pods, Deployments, ReplicaSets y Services)
+                ```sh
+                $ kubectl get all
+                ```
+            * Mostrar detalles de un recurso especifico o grupo de recursos
+                ```sh
+                # Deplyment
+                $ kubectl describe deployment.apps/backend-deployment
+
+                # Pod
+                $ kubectl describe pod/backend-deployment-6b9d669f58-9hw8z
+                ```
+            * Imprime los registros o logs de un contenedor en un pod
+                ```sh
+                # Pod
+                $ kubectl logs pod/backend-deployment-6b9d669f58-9hw8z
+                $ kubectl logs -f pod/backend-deployment-6b9d669f58-9hw8z   # Logs con seguiento
+                ```
+
+            * Actual el valor del `JWT_SECRET` del archivo `backend-secrets.yml`.
+            * Aplicar la configuracion del secrets y deployment.
+                ```sh
+                $ kubectl apply -f backend-secrets.yml
+                ```
+            * Listar los recursos de k8s (Pods, Deployments, ReplicaSets y Services)
+                ```sh
+                $ kubectl get all
+                ```
+            * Gestionar el despliegue de un recurso
+                ```sh
+                $ kubectl rollout restart deployment backend-deployment
+                ```
+            * Listar los recursos de k8s (Pods, Deployments, ReplicaSets y Services)
+                ```sh
+                $ kubectl get all
+                ```
+            * Imprime los registros o logs de un contenedor en un pod
+                ```sh
+                # Pod
+                $ kubectl logs -f pod/backend-deployment-776c597848-586gm   # Logs con seguiento
+                ```
