@@ -21,3 +21,7 @@ INTRODUCCIÓN A KUBERNETES (K8S)
                 ```sh
                 $ echo -n postgres | base64
                 ```
+        + Pods, Services y Deployments
+            * Crear y configurar el archivo `postgres.yml`.
+            * Buscar en la documentación `Deployments` (URL: https://kubernetes.io/docs/home/).
+            * Buscar en la documentación `Services` (URL: https://kubernetes.io/docs/home/).
