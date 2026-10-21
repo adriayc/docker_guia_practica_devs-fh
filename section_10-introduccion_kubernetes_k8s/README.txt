@@ -53,3 +53,6 @@ INTRODUCCIÓN A KUBERNETES (K8S)
                 ```sh
                 $ minikube kubectl -- logs pod/postgres-deployment-644cc6778b-zfpwl
                 ```
+        + Agregar PGAdmin al clúster.
+            * Crear y configurar el archivo `pgadmin-secrets.yml`.
+            * Crear y configurar el archivo `pgadmin.yml`.
