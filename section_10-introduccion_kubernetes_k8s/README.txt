@@ -56,3 +56,42 @@ INTRODUCCIÓN A KUBERNETES (K8S)
         + Agregar PGAdmin al clúster.
             * Crear y configurar el archivo `pgadmin-secrets.yml`.
             * Crear y configurar el archivo `pgadmin.yml`.
+        + Desplegar PGAdmin al clúster.
+            * Aplicar la configuracion del secrets y deployment.
+                ```sh
+                $ kubectl apply -f pgadmin-secrets.yml
+                $ kubectl apply -f pgadmin.yml
+                ```
+            * Listar los recursos de k8s (Pods, Deployments, ReplicaSets y Services)
+                ```sh
+                $ kubectl get all
+                ```
+            * Mostrar detalles de un recurso especifico o grupo de recursos
+                ```sh
+                $ kubectl describe pod/pgadmin-deployment-8fbffdcdf-dcsjj
+                ```
+            * Imprime los registros o logs de un contenedor en un pod
+                ```sh
+                $ kubectl logs pod/pgadmin-deployment-8fbffdcdf-dcsjj
+                ```
+            * Listar los recursos de k8s (Pods, Deployments, ReplicaSets y Services)
+                ```sh
+                $ kubectl get all
+                ```
+            * Acceder o exponer el servicio y minikube abre el navegador.
+                ```sh
+                $ minikube service pgadmin-service
+                ```
+            * O abrir el navegador manualmente (URL: http://127.0.0.1:46101) e ingresar las credenciales (email and password) definidos en el `pgadmin-secrets.yml`.
+                - Agrear un nuevo servidor (Register > Server.. > Add a new server)
+                    > General
+                        > Name: PostgreSQL
+                    > Connection
+                        > Host name/address: postgres-service # {{POSTGRES_SERVICE_NAME}}
+                        > Port: 5432
+                        > Maintenance database: postgres
+                        > Username: postgres # {{DB_USER_ON_SECRETS}}
+                        > Password: ThisIsMyPassword # {{DB_PASSWORD_ON_SECRETS}}
+                        > Save password? [TRUE]
+                        Click 'Save'
+                        

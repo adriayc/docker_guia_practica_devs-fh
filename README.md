@@ -550,6 +550,14 @@ $ minikube stop
 $ minikube delte --all
 ```
 
+##### Service
+
+- Acceder o expoder el acceso al servicio
+
+```sh
+$ minikube service {{SERVICE_NAME}}
+```
+
 #### Kubernetes
 
 ##### Version
