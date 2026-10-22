@@ -73,6 +73,34 @@ En Linux, normalmente se instala directamente Docker Engine, por lo que Docker D
 
 Alpine Linux es una distribución de Linux muy ligera, segura y optimizada, diseñada para consumir pocos recursos. En Docker, se utiliza como imagen base para crear contenedores pequeños y rápidos.
 
+### Docker Volume
+
+Un Volumen (Docker Volume) es un mecanismo que permite almacenar datos de forma persistente, incluso si un contenedor se detiene, se elimina o se vuelve a crear.
+
+Por defecto, los datos que genera un contenedor se almacenan dentro de él. Si eliminas el contenedor, esos datos también se eliminan. Los volúmenes solucionan este problema guardando la información fuera del ciclo de la vida del contenedor.
+
+#### Tipos de almacenamiento en Docker
+
+Docker ofrece tres formas principales de almacenar datos en los contenedores:
+
+1. **Docker Volumes (Volúmenes adminstrados por Docker)**
+
+   Los Docker Volumes son el tipo de almacenamiento recomendado por Docker para datos persistentes.
+
+2. **Bind Mounts (Montajes de directorios del host)**
+
+   Los Bind Mounts conectan directamente una carpeta del sistema operativo con una carpeta dentro del contenedor.
+
+3. **tmpfs Mounts (Montajes en memoria RAM)**
+
+   Los tmpfs Mounts almacenan datos únicamente en la memoria RAM.
+
+### Container Network
+
+Una Container Network (o red de contenedores) es un mecanismo de Docker que permite que los contenedores se comuniquen entre sí y con el mundo exterior.
+
+Sin un red, los contenedores estarían completamente aislados y no podrían intercambiar información.
+
 ### Commandos
 
 - Descargar una imagen desde el registro oficial:
@@ -127,6 +155,36 @@ $ docker container run \
 > -e VAR_NAME=value \
 > -p PORT:PORT \
 > -d IMAGE_NAME
+
+# Usando volume (Persistencia de data)
+$ docker container run --detach \
+> --name CONTAINER-NAME \
+> -p PORT_HOST:PORT_CONTAINER \
+> --env VAR_NAME=VALUE \
+> --volume VOLUME-NAME:DATA_FILES_CONTAINER \            # Volúmenes nombrados o Docker Volumes
+> IMAGE_NAME
+# -v - enlazar un volumen (Compartir archivos entre tu host y el contenedor)
+
+# Redes de contenedores
+$ docker container run --detach \
+> --name CONTAINER-NAME \
+> -p PORT_HOST:PORT_CONTAINER \
+> --env VAR_NAME=VALUE \
+> --volume VOLUME-NAME:DATA_FILES_CONTAINER \
+> --network [NETWORK_ID | NAME]
+> IMAGE_NAME
+# -n - Conectar una red al contenedor
+
+# Bind volume
+$ docker container run \
+--name CONTAINER-NAME \
+-w /app \
+-p PORT_HOST:PORT_CONTAINER
+-v "ABSOLUTE_PATH_HOST:ABSOLUTE_PATH_CONTAINER" \           # Bind volume (E.g. -v /home/adriano/nest-app:/app)
+IMAGE_NAME:TAG \
+sh -c "COMMAND1 && COMMAND2"
+# -w - Directorio de trabajo dentro del contenedor
+# sh -c - Levanta una shell interna para ejecutar comandos
 ```
 
 - Listar contenedores
@@ -156,6 +214,16 @@ $ docker container stop [CONTAINER_ID | NAMES]
 $ docker container start [CONTAINER_ID | NAMES]
 ```
 
+- Ejecutar un comando de un contenedor en ejecución
+
+```sh
+$ docker container exec -it [CONTAINER_ID | NAMES] EXECUTABLE        # -it - interative terminal
+# -i - Mantén STDIN abierto aunque no esté conectado
+# -t - Asignar un pseudo-TTY
+$ docker container exec -it [CONTAINER_ID | NAMES] bash
+$ docker container exec -it [CONTAINER_ID | NAMES] /bin/sh
+```
+
 - Obtener los logs de un contenedor
 
 ```sh
@@ -173,4 +241,64 @@ $ docker container rm -f $(docker ps -a -q)         # Eliminar todos los contene
 $ docker container rm -f [CONTAINER_ID | NAMES] [CONTAINER_ID | NAMES]         # Eliminar varios contenedores en ejecución
 
 $ docker container prune                            # Elimina todos los contenedores detenidos
+```
+
+- Crear un volumen
+
+```sh
+$ docker volume create VOLUME_NAME
+```
+
+- Lista volumnes
+
+```sh
+$ docker volume ls
+```
+
+- Mostrar información detallada del volumen
+
+```sh
+$ docker volume inspect [VOLUME_NAME]
+```
+
+- Eliminar un volumen
+
+```sh
+$ docker volume rm [VOLUME_NAME]
+```
+
+- Crear un red
+
+```sh
+$ docker network create NETWORK_NAME
+```
+
+- Listar redes
+
+```sh
+$ docker network ls
+```
+
+- Conectar un contenedor a un red
+
+```sh
+$ docker network connect [NETWORK_ID | NAME] [CONTAINER_ID | NAMES]
+```
+
+- Mostrar información detallada de un red
+
+```sh
+$ docker network inspect [NETWORK_ID | NAME]
+```
+
+- Elimina todas las redes no utilizadas
+
+```sh
+$ docker network prune
+```
+
+- Eliminar un red
+
+```sh
+$ docker network rm [NETWORK_ID | NAME]
 ```
