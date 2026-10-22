@@ -1,0 +1,41 @@
+# version: '3' # Obsolete!!!
+
+services:
+  app:
+    build:
+      context: . # Ubicación del Dockerfile
+      # target: prod # Elige una stage específica de un Dockerfile (Usado en milti-stage builds)
+      target: ${STAGE} # Elige una stage específica de un Dockerfile (Usado en milti-stage builds)
+      dockerfile: Dockerfile # Nombre del Dockerfile
+    image: adriayc/teslo-shop-api:2.1.0
+    container_name: nest-app
+    # command: yarn start:dev # Opcion 2 - para ejecutar la app desde docker-compose-yml
+    ports:
+      - ${PORT}:${PORT}
+    environment:
+      APP_VERSION: ${APP_VERSION}
+      STAGE: ${STAGE}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      PORT: ${PORT}
+      HOST_API: ${HOST_API}
+      JWT_SECRET: ${JWT_SECRET}
+
+  db:
+    image: postgres:14.3
+    container_name: ${DB_NAME}
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:
+    external: false

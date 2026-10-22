@@ -113,16 +113,16 @@ Un `.dockerignore` es un archivo de texto que le indica a Docker qué archivos y
 
 ### Commandos
 
-#### Pull
+#### Image
 
 - Descargar una imagen desde el registro oficial:
 
 ```sh
-$ docker pull IMAGEN_NAME
-$ docker pull IMAGEN_NAME:TAG       # Versión específica
-```
+$ docker image pull IMAGE_NAME:TAG     # Versión específica
+$ docker image pull IMAGE_NAME
 
-#### Image
+$ docker pull IMAGEN_NAME
+```
 
 - Listar imagenes
 
@@ -158,6 +158,14 @@ $ docker image build --no-cache --tag IMAGE_NAME:TAG PATH
 # --no-cache - no utiliza la caché al crear la imagen
 
 $ docker build --tag IMAGE_NAME:TAG PATH
+```
+
+- Subir una imagen al registro
+
+```sh
+$ docker image push REGISTRY/REPOSITORY:TAG
+
+$ docker push REGISTRY/REPOSITORY:TAG
 ```
 
 #### Container
@@ -381,6 +389,15 @@ $ docker buildx build --platform=VALUE[,VALUE] -t REGISTRY/REPOSITORY:TAG --push
 # . - estable el archivo `Dockerfile`
 $ docker buildx build --no-cache --platform=VALUE[,VALUE] -t REGISTRY/REPOSITORY:TAG --push .
 # --no-cache - no utilice caché al crear la imagen
+
+$ docker buildx build -f PATH/Dockerfile --platform=VALUE[,VALUE] -t [registry/]repository[:tag] --push .
+# -f - nombre del Dockerfile (default: PATH/Dockerfile)
+```
+
+- Mostrar detalles de una imagen en el registro
+
+```sh
+$ docker buildx imagetools inspect REGISTRY/REPOSITORY:TAG
 ```
 
 ## Docker Compose
@@ -393,10 +410,25 @@ Nomenclatura de los contanedores usados en el Docker Compose: `<project-name>_<s
 
 ### Commandos
 
+- Construir y reconstruir servicios
+
+```sh
+$ docker compose build
+$ docker compose build --no-cache
+# --no-cache - no utiliza la caché al crear la imagen
+
+$ docker compose -f COMPOSE_FILE.yml, [COMPOSE_FILE.yaml] build
+# -f - archivos de configuración de compose
+```
+
 - Crear y poner en marcha contenedores
 
 ```sh
 $ docker compose up
+
+$ docker compose -f COMPOSE_FILE.yml, [COMPOSE_FILE.yaml] up
+# -f - archivos de configuración de compose
+$ docker compose -f COMPOSE_FILE.yml, [COMPOSE_FILE.yaml] up [SERVICE...]
 ```
 
 - Detener y eliminar contenedores y redes

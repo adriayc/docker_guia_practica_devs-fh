@@ -1,0 +1,19 @@
+{
+  "name": "cron-ticker",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Adriano Ayala",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "node-cron": "^4.6.0"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2"
+  }
+}
