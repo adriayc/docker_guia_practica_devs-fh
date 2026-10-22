@@ -1,0 +1,49 @@
+services:
+  db:
+    # container_name: pokemon_db
+    container_name: ${MONGO_INITDB_NAME}
+    image: mongo:8.3.4
+    volumes:
+      - pokedata:/data/db
+    # ports:
+    #   - 27017:27017
+    restart: always
+    environment:
+      # - MONGO_INITDB_ROOT_USERNAME=root
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    command: ["--auth"]
+
+  # MongoDB admin interface
+  mongo-express:
+    depends_on:
+      - db
+    image: mongo-express:1.0.2-18-alpine3.18
+    environment:
+      - ME_CONFIG_BASICAUTH_USERNAME=${ME_CONFIG_BASICAUTH_USERNAME} # mongo-express web username
+      - ME_CONFIG_BASICAUTH_PASSWORD=${ME_CONFIG_BASICAUTH_PASSWORD} # mongo-express web password
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=${MONGO_INITDB_ROOT_USERNAME}
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - ME_CONFIG_MONGODB_SERVER=${MONGO_INITDB_NAME} # MongoDB container name
+    ports:
+      - 8081:8081
+    restart: always
+
+  # Pokemon App (Nest + MongoDB)
+  poke-app:
+    depends_on:
+      - db
+      - mongo-express
+    image: klerith/pokemon-nest-app:1.0.0
+    ports:
+      - 3000:3000
+    environment:
+      - MONGODB=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@${MONGO_INITDB_NAME}:27017 # mongodb://username:password@localhost:27017
+      - DB_NAME=${MONGO_INITDB_NAME}
+    restart: always
+
+volumes:
+  # La opción `external: false` le indica a Compose que administre el ciclo de vida del recurso (volumen, red o secreto)
+  # automáticamente (Es la opción por defecto, casi nunca es necesario escribirlo explicitamente).
+  pokedata:
+    external: false

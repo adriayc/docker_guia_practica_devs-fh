@@ -1,0 +1,37 @@
+# Versión a usar en el docker-compose
+# version: "3" # Obsolete
+
+services:
+  # Postgres
+  db:
+    container_name: postgres_database
+    image: postgres:17.10
+    volumes:
+      # - postgres-db:/var/lib/postgresql/data # Named Volume
+      - ./postgresdb:/var/lib/postgresql/data # Bind Volume
+    environment:
+      - POSTGRES_PASSWORD=postgres123
+
+  # pgAdmin4
+  pgAdmin:
+    depends_on:
+      - db # Depende del servicio 'db'
+    image: dpage/pgadmin4:9.15.0
+    ports:
+      - "8080:80"
+    volumes:
+      - ./pgadmin:/var/lib/pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin@mail.com
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin123
+
+# Named Volume
+# volumes:
+#   # Crea el volumen si aún no existe. De lo contrario, utiliza el volumen existente y vuelve a crear si se elimina manualmente
+#   # fuera del Compose. (postgre-data: A secas)
+#   # postgres-db:
+
+#   # La opcion `external` especifica que este volumen ya existe en la plataforma y que su ciclo de vida se gestiona independientemente
+#   # de la aplicación. En este caso, Compose no crea el volumen y devuelve un error si no existe.
+#   postgres-db:
+#     external: true
